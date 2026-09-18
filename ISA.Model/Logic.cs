@@ -18,7 +18,7 @@ namespace ISA.Model
         /// <param name="brand">Марка автомобиля.</param>
         /// <param name="price">Стоимость автомобиля.</param>
         /// <returns>Уникальный ID созданного автомобиля.</returns>
-        public int AddCar(string brand, decimal price)
+        public int AddCar(Car.CarBrand brand, decimal price)
         {
             int currentId = _nextId;
 
@@ -56,7 +56,7 @@ namespace ISA.Model
         /// <param name="newBrand">Марка автомобиля для обновления.</param>
         /// <param name="newPrice">Стоимость автомобиля для обновления.</param>
         /// <returns>Успешное, либо неуспешное подтверждение изменения данных об автомобиле.</returns>
-        public bool UpdateCar(int id, string newBrand, decimal newPrice)
+        public bool UpdateCar(int id, Car.CarBrand newBrand, decimal newPrice)
         {
             foreach (Car c in _cars)
             {
@@ -94,9 +94,9 @@ namespace ISA.Model
         /// Метод для группировки автомобилей по их марке.
         /// </summary>
         /// <returns>Сгрупированный по марке словарь автомобилей.</returns>
-        public Dictionary<string, List<Car>> GroupByBrand() 
+        public Dictionary<Car.CarBrand, List<Car>> GroupByBrand() 
         {
-            Dictionary<string,List<Car>> result = new Dictionary<string, List<Car>>();
+            Dictionary<Car.CarBrand,List<Car>> result = new Dictionary<Car.CarBrand, List<Car>>();
 
             foreach (Car c in _cars)
             {
@@ -127,6 +127,13 @@ namespace ISA.Model
             }
             return suitableCars;
         }
+
+        /// <summary>
+        /// Метод возвращает список в исходное состояние без группировок.
+        /// </summary>
+        /// <returns>Исходный список с автомобилями.</returns>
+        public List<Car> GetCars()
+        { return _cars; }
 
     }
 }
