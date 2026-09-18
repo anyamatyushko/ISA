@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ISA.Model
 {
-    internal class Logic
+    public class Logic
     {
+        
     }
 }
