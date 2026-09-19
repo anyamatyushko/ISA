@@ -2,8 +2,16 @@
 {
     public class Car
     {
+        public enum CarBrand
+        {
+            BMW,
+            Mercedes,
+            Volvo,
+            Audi,
+            Volkswagen
+        }
         public int Id { get; set; }
-        public string Brand { get; set; } = string.Empty;
+        public CarBrand Brand { get; set; }
         public decimal Price { get; set; }
     }
 }
