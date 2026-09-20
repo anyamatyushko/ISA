@@ -18,6 +18,7 @@ namespace ISA.ConsoleView
                 Console.WriteLine("3. Обновить данные автомобиля");
                 Console.WriteLine("4. Удалить автомобиль");
                 Console.WriteLine("5. Фильтр по бюджету");
+                Console.WriteLine("6. Группировать по бюджету покупателя");
                 Console.WriteLine("0. Выход");
                 Console.Write("\nВыберите пункт меню: ");
 
@@ -39,6 +40,9 @@ namespace ISA.ConsoleView
                         break;
                     case "5":
                         FilterCarsByBudget();
+                        break;
+                    case "6":
+                        GroupByBrand();
                         break;
                     case "0":
                         return;
@@ -199,6 +203,47 @@ namespace ISA.ConsoleView
             Console.WriteLine("\nНажмите любую клавишу");
             Console.ReadKey();
         }
+
+        /// <summary>
+        /// Метод, осуществляющий группировку списку по автомобилям.
+        /// </summary>
+        private static void GroupByBrand()
+        {
+            Console.Clear();
+            List<Car> allCars = _logic.GetCars();
+
+            if (allCars.Count == 0)
+            {
+                Console.WriteLine("Список автомобилей пуст. Группировать нечего.");
+            }
+            else
+            {
+                var groupedCars = new Dictionary<Car.CarBrand, List<Car>>();
+
+                foreach (var car in allCars)
+                {
+                    if (!groupedCars.ContainsKey(car.Brand))
+                    {
+                        groupedCars[car.Brand] = new List<Car>();
+                    }
+                    groupedCars[car.Brand].Add(car);
+                }
+
+                foreach (var group in groupedCars)
+                {
+                    Console.WriteLine($"Бренд: {group.Key} (Всего машин: {group.Value.Count})");
+                    foreach (var car in group.Value)
+                    {
+                        Console.WriteLine($" ID: {car.Id} Цена: {car.Price:C}");
+                    }
+                    Console.WriteLine();
+                }
+            }
+
+            Console.WriteLine("\nНажмите любую клавишу, чтобы вернуться в меню...");
+            Console.ReadKey();
+        }
+
 
         /// <summary>
         /// Вспомогательное текстовое меню для выбора марки машины.
