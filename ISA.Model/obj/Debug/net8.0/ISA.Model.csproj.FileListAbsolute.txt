@@ -1,0 +1,12 @@
+C:\MyProjects\ISA\ISA.Model\bin\Debug\net8.0\ISA.Model.deps.json
+C:\MyProjects\ISA\ISA.Model\bin\Debug\net8.0\ISA.Model.dll
+C:\MyProjects\ISA\ISA.Model\bin\Debug\net8.0\ISA.Model.pdb
+C:\MyProjects\ISA\ISA.Model\obj\Debug\net8.0\ISA.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\MyProjects\ISA\ISA.Model\obj\Debug\net8.0\ISA.Model.AssemblyInfoInputs.cache
+C:\MyProjects\ISA\ISA.Model\obj\Debug\net8.0\ISA.Model.AssemblyInfo.cs
+C:\MyProjects\ISA\ISA.Model\obj\Debug\net8.0\ISA.Model.csproj.CoreCompileInputs.cache
+C:\MyProjects\ISA\ISA.Model\obj\Debug\net8.0\ISA.Model.sourcelink.json
+C:\MyProjects\ISA\ISA.Model\obj\Debug\net8.0\ISA.Model.dll
+C:\MyProjects\ISA\ISA.Model\obj\Debug\net8.0\refint\ISA.Model.dll
+C:\MyProjects\ISA\ISA.Model\obj\Debug\net8.0\ISA.Model.pdb
+C:\MyProjects\ISA\ISA.Model\obj\Debug\net8.0\ref\ISA.Model.dll

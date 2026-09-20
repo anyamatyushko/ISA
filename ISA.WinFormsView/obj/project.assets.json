@@ -1,14 +1,33 @@
 {
   "version": 3,
   "targets": {
-    "net8.0-windows7.0": {}
+    "net8.0-windows7.0": {
+      "ISA.Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/ISA.Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ISA.Model.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "ISA.Model/1.0.0": {
+      "type": "project",
+      "path": "../ISA.Model/ISA.Model.csproj",
+      "msbuildProject": "../ISA.Model/ISA.Model.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net8.0-windows7.0": []
+    "net8.0-windows7.0": [
+      "ISA.Model >= 1.0.0"
+    ]
   },
   "packageFolders": {
-    "C:\\Users\\Anna\\.nuget\\packages\\": {},
+    "C:\\Users\\Ксю\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
@@ -17,14 +36,14 @@
       "projectUniqueName": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\ISA.WinFormsView.csproj",
       "projectName": "ISA.WinFormsView",
       "projectPath": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\ISA.WinFormsView.csproj",
-      "packagesPath": "C:\\Users\\Anna\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\Ксю\\.nuget\\packages\\",
       "outputPath": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Anna\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Ксю\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -38,7 +57,11 @@
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\MyProjects\\ISA\\ISA.Model\\ISA.Model.csproj": {
+              "projectPath": "C:\\MyProjects\\ISA\\ISA.Model\\ISA.Model.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -75,7 +98,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

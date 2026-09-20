@@ -24,6 +24,7 @@ namespace ISA.Model
 
             Car newCar = new Car();
             newCar.Id = currentId;
+            newCar.Brand = brand;
             newCar.Price = price;
 
             _cars.Add(newCar);
