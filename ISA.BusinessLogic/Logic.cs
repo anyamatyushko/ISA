@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ISA.Model
+namespace ISA.BusinessLogic
 {
     public class Logic
     {

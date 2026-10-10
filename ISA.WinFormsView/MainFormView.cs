@@ -8,7 +8,7 @@ namespace ISA.WinFormsView
 {
     public partial class MainFormView : Form
     {
-     
+
         private Logic _logic = new Logic();
         public MainFormView()
         {
@@ -136,15 +136,15 @@ namespace ISA.WinFormsView
         }
 
         /// <summary>
-        /// Обрабатывает событие клика по кнопке "Сгруппировать по бренду". 
+        /// Обрабатывает событие клика по кнопке "Сортировать по бренду". 
         /// </summary>
-        private void GroupByBrandButton_Click(object sender, EventArgs e)
+        private void SortByBrandButton_Click(object sender, EventArgs e)
         {
             List<Car> allCars = _logic.GetCars();
 
             if (allCars.Count == 0)
             {
-                MessageBox.Show("Список автомобилей пуст. Нечего группировать.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Список автомобилей пуст. Нечего сортировать.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -157,6 +157,43 @@ namespace ISA.WinFormsView
                 dgvCars.Rows.Add(car.Id, car.Brand.ToString(), car.Price.ToString("C"));
             }
         }
+
+        /// <summary>
+        /// Обрабатывает событие клика по кнопке "Группировать по бренду". 
+        /// </summary>
+        private void GroupByBrandButton_Click(object sender, EventArgs e)
+        {
+            Dictionary<Car.CarBrand, List<Car>> groupedData = _logic.GroupByBrand();
+
+            if (groupedData.Count == 0)
+            {
+                MessageBox.Show("Список автомобилей пуст. Нечего группировать.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            dgvCars.Rows.Clear();
+
+            foreach (KeyValuePair<Car.CarBrand, List<Car>> pair in groupedData)
+            {
+                Car.CarBrand brand = pair.Key;
+                List<Car> carsInGroup = pair.Value;
+
+                int headerIndex = dgvCars.Rows.Add();
+
+                dgvCars.Rows[headerIndex].Cells[1].Value = $"Группа: {brand} (Количество: {carsInGroup.Count})";
+
+                dgvCars.Rows[headerIndex].DefaultCellStyle.Font = new Font(dgvCars.Font, FontStyle.Bold);
+                dgvCars.Rows[headerIndex].DefaultCellStyle.BackColor = Color.LightGray;
+                dgvCars.Rows[headerIndex].ReadOnly = true; 
+
+                foreach (Car car in carsInGroup)
+                {
+                    string indentedBrand = "    " + car.Brand.ToString();
+                    dgvCars.Rows.Add(car.Id, indentedBrand, car.Price.ToString("C"));
+                }
+            }
+        }
+
 
         /// <summary>
         /// Обрабатывает событие клика по кнопке "Вернуть в исходное состояние". 
