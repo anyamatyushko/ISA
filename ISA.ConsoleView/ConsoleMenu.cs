@@ -18,7 +18,7 @@ namespace ISA.ConsoleView
                 Console.WriteLine("3. Обновить данные автомобиля");
                 Console.WriteLine("4. Удалить автомобиль");
                 Console.WriteLine("5. Фильтр по бюджету");
-                Console.WriteLine("6. Группировать по бюджету покупателя");
+                Console.WriteLine("6. Группировать по бренду автомобиля");
                 Console.WriteLine("0. Выход");
                 Console.Write("\nВыберите пункт меню: ");
 
@@ -74,7 +74,7 @@ namespace ISA.ConsoleView
                 }
             }
 
-            Console.WriteLine("\nНажмите любую клавишу, чтобы вернуться в меню...");
+            Console.WriteLine("\nНажмите любую клавишу, чтобы вернуться в меню");
             Console.ReadKey();
         }
 
@@ -148,6 +148,19 @@ namespace ISA.ConsoleView
         private static void DeleteCarData()
         {
             Console.Clear();
+            List<Car> cars = _logic.GetCars();
+
+            if (cars.Count == 0)
+            {
+                Console.WriteLine("Список пуст.");
+            }
+            else
+            {
+                foreach (Car car in cars)
+                {
+                    Console.WriteLine($"ID: {car.Id}  Бренд: {car.Brand}  Цена: {car.Price:C}");
+                }
+            }
             Console.Write("Введите ID автомобиля для удаления: ");
 
             if (int.TryParse(Console.ReadLine(), out int id))

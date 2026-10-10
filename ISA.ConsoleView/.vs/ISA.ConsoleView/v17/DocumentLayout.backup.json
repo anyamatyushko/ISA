@@ -7,10 +7,10 @@
       "RelativeMoniker": "D:0:0:{BFEBAA36-AFF0-41C1-A87A-B2A6E76C7F91}|ISA.ConsoleView.csproj|solutionrelative:consolemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1ABE4DC-B1D1-4617-B75B-99414D404215}|..\\ISA.Model\\ISA.Model.csproj|c:\\myprojects\\isa\\isa.model\\logic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C1ABE4DC-B1D1-4617-B75B-99414D404215}|..\\ISA.Model\\ISA.Model.csproj|c:\\myprojects\\isa\\isa.model\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A5D07A31-8184-440F-8E33-09D4E68C046A}|..\\ISA.WinFormsView\\ISA.WinFormsView.csproj|c:\\myprojects\\isa\\isa.winformsview\\mainformview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{C1ABE4DC-B1D1-4617-B75B-99414D404215}|..\\ISA.Model\\ISA.Model.csproj|c:\\myprojects\\isa\\isa.model\\logic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -20,7 +20,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -52,41 +52,42 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Logic.cs",
-              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.Model\\Logic.cs",
-              "RelativeDocumentMoniker": "..\\ISA.Model\\Logic.cs",
-              "ToolTip": "C:\\MyProjects\\ISA\\ISA.Model\\Logic.cs",
-              "RelativeToolTip": "..\\ISA.Model\\Logic.cs",
-              "ViewState": "AgIAAFIAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-20T14:29:52.125Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "ConsoleMenu.cs",
               "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.ConsoleView\\ConsoleMenu.cs",
               "RelativeDocumentMoniker": "ConsoleMenu.cs",
               "ToolTip": "C:\\MyProjects\\ISA\\ISA.ConsoleView\\ConsoleMenu.cs",
               "RelativeToolTip": "ConsoleMenu.cs",
-              "ViewState": "AgIAANMAAAAAAAAAAAAwwPAAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAALQAAAAAAAAAAAAowGkAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-20T14:26:28.244Z",
+              "WhenOpened": "2026-09-28T03:06:31.667Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Car.cs",
+              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.Model\\Car.cs",
+              "RelativeDocumentMoniker": "..\\ISA.Model\\Car.cs",
+              "ToolTip": "C:\\MyProjects\\ISA\\ISA.Model\\Car.cs",
+              "RelativeToolTip": "..\\ISA.Model\\Car.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-28T03:06:27.338Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "MainFormView.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\MainFormView.cs",
-              "RelativeDocumentMoniker": "..\\ISA.WinFormsView\\MainFormView.cs",
-              "ToolTip": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\MainFormView.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "..\\ISA.WinFormsView\\MainFormView.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Title": "Logic.cs",
+              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.Model\\Logic.cs",
+              "RelativeDocumentMoniker": "..\\ISA.Model\\Logic.cs",
+              "ToolTip": "C:\\MyProjects\\ISA\\ISA.Model\\Logic.cs",
+              "RelativeToolTip": "..\\ISA.Model\\Logic.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-20T14:14:42.607Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2026-09-28T03:06:13.906Z",
+              "EditorCaption": ""
             }
           ]
         }

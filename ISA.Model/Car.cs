@@ -1,6 +1,6 @@
 ﻿namespace ISA.Model
 {
-    public class Car
+    public class Car: IDomainObject
     {
         public enum CarBrand
         {
