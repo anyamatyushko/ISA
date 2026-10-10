@@ -60,7 +60,7 @@
               "RelativeDocumentMoniker": "..\\ISA.DataAccessLayer\\IRepository.cs",
               "ToolTip": "C:\\MyProjects\\ISA\\ISA.DataAccessLayer\\IRepository.cs",
               "RelativeToolTip": "..\\ISA.DataAccessLayer\\IRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-10T14:31:42.699Z",
               "EditorCaption": ""
@@ -75,8 +75,7 @@
               "RelativeToolTip": "..\\ISA.BusinessLogic\\Logic.cs",
               "ViewState": "AgIAAGwAAAAAAAAAAAAowAwAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-10T13:52:00.907Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-10T13:52:00.907Z"
             },
             {
               "$type": "Document",
@@ -88,8 +87,7 @@
               "RelativeToolTip": "..\\ISA.Model\\Car.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-10T13:49:17.062Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-10T13:49:17.062Z"
             },
             {
               "$type": "Document",
@@ -101,8 +99,7 @@
               "RelativeToolTip": "..\\ISA.Model\\IDomainObject.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-10T13:48:46.142Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-10T13:48:46.142Z"
             }
           ]
         }
