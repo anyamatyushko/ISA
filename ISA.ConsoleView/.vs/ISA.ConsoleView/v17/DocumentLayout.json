@@ -6,13 +6,13 @@
       "AbsoluteMoniker": "D:0:0:{218168B0-5477-4E53-B4F2-36B8AB978E2D}|..\\ISA.DataAccessLayer\\ISA.DataAccessLayer.csproj|c:\\myprojects\\isa\\isa.dataaccesslayer\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{89BC9257-45E3-4097-894A-BC1DD70E65A7}|..\\ISA.BusinessLogic\\ISA.BusinessLogic.csproj|c:\\myprojects\\isa\\isa.businesslogic\\logic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C1ABE4DC-B1D1-4617-B75B-99414D404215}|..\\ISA.Model\\ISA.Model.csproj|c:\\myprojects\\isa\\isa.model\\idomainobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C1ABE4DC-B1D1-4617-B75B-99414D404215}|..\\ISA.Model\\ISA.Model.csproj|c:\\myprojects\\isa\\isa.model\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1ABE4DC-B1D1-4617-B75B-99414D404215}|..\\ISA.Model\\ISA.Model.csproj|c:\\myprojects\\isa\\isa.model\\idomainobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{89BC9257-45E3-4097-894A-BC1DD70E65A7}|..\\ISA.BusinessLogic\\ISA.BusinessLogic.csproj|c:\\myprojects\\isa\\isa.businesslogic\\logic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -60,14 +60,14 @@
               "RelativeDocumentMoniker": "..\\ISA.DataAccessLayer\\IRepository.cs",
               "ToolTip": "C:\\MyProjects\\ISA\\ISA.DataAccessLayer\\IRepository.cs",
               "RelativeToolTip": "..\\ISA.DataAccessLayer\\IRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-10T14:31:42.699Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Logic.cs",
               "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.BusinessLogic\\Logic.cs",
               "RelativeDocumentMoniker": "..\\ISA.BusinessLogic\\Logic.cs",
@@ -93,13 +93,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "IDomainObject.cs",
               "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.Model\\IDomainObject.cs",
               "RelativeDocumentMoniker": "..\\ISA.Model\\IDomainObject.cs",
               "ToolTip": "C:\\MyProjects\\ISA\\ISA.Model\\IDomainObject.cs",
               "RelativeToolTip": "..\\ISA.Model\\IDomainObject.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-10T13:48:46.142Z",
               "EditorCaption": ""

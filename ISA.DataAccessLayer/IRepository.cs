@@ -9,11 +9,11 @@ namespace ISA.DataAccessLayer
 {
     public interface IRepository<T> where T: IDomainObject
     {
-        int AddCar(T item);
-        T GetCarById(int id);
-        List<T> GetCars();
-        bool UpdateCar(T item);
-        bool DeleteCar(int id);
+        int Create(T item);
+        T GetById(int id);
+        List<T> GetAll();
+        bool Update(T item);
+        bool Delete(int id);
 
     }
 }
