@@ -2,6 +2,7 @@
 using System;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ISA.BusinessLogic;
 
 namespace ISA.WinFormsView
 {
@@ -30,7 +31,7 @@ namespace ISA.WinFormsView
                     return;
                 }
 
-                _logic.AddCar(_selectedBrand, enteredPrice);
+                _logic.Create(_selectedBrand, enteredPrice);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

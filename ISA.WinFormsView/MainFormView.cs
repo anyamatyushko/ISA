@@ -1,19 +1,31 @@
-﻿using System;
+﻿using ISA.BusinessLogic;
+using ISA.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using ISA.Model;
 
 namespace ISA.WinFormsView
 {
     public partial class MainFormView : Form
     {
 
-        private Logic _logic = new Logic();
-        public MainFormView()
+        private readonly Logic _logic;
+
+        public MainFormView(Logic logic)
         {
             InitializeComponent();
-            InitTable();
+            _logic = logic;
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            RefreshGrid();
+        }
+
+        private void RefreshGrid()
+        {
+            dgvCars.DataSource = _logic.GetAll();
         }
 
         /// <summary>
@@ -21,10 +33,6 @@ namespace ISA.WinFormsView
         /// </summary>
         private void InitTable()
         {
-            dgvCars.ColumnCount = 3;
-            dgvCars.Columns[0].Name = "ID";
-            dgvCars.Columns[1].Name = "Бренд";
-            dgvCars.Columns[2].Name = "Цена";
             dgvCars.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCars.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
@@ -35,37 +43,24 @@ namespace ISA.WinFormsView
         /// <param name="maxPrice">Максимально допустимая цена автомобиля для фильтрации.</param>
         private void UpdateTable(decimal? maxPrice = null)
         {
-            dgvCars.Rows.Clear();
+            List<Car> carsToShow;
+
             if (maxPrice.HasValue)
             {
-                var filteredCars = _logic.GetCarByBudget(maxPrice.Value);
-                foreach (var car in filteredCars)
-                {
-                    dgvCars.Rows.Add(car.Id, car.Brand.ToString(), car.Price.ToString("C"));
-                }
+                carsToShow = _logic.GetCarByBudget(maxPrice.Value);
             }
             else
             {
-                int id = 1;
-                int emptyCount = 0;
-                while (true)
-                {
-                    var car = _logic.GetCarById(id);
-                    if (car != null)
-                    {
-                        emptyCount = 0;
-                        dgvCars.Rows.Add(car.Id, car.Brand.ToString(), car.Price.ToString("C"));
-                    }
-                    else
-                    {
-                        emptyCount++;
-                    }
-
-                    if (emptyCount > 20) break;
-                    id++;
-                }
+                carsToShow = _logic.GetAll();
             }
+
+            dgvCars.DataSource = null;
+            dgvCars.Columns.Clear();
+
+            dgvCars.DataSource = carsToShow;
         }
+
+
 
         /// <summary>
         /// Обрабатывает событие клика по кнопке "Создать".
@@ -124,7 +119,7 @@ namespace ISA.WinFormsView
             {
                 int selectedId = Convert.ToInt32(dgvCars.SelectedRows[0].Cells[0].Value);
 
-                if (_logic.DeleteCar(selectedId))
+                if (_logic.Delete(selectedId))
                 {
                     UpdateTable();
                 }
@@ -140,7 +135,7 @@ namespace ISA.WinFormsView
         /// </summary>
         private void SortByBrandButton_Click(object sender, EventArgs e)
         {
-            List<Car> allCars = _logic.GetCars();
+            List<Car> allCars = _logic.GetAll();
 
             if (allCars.Count == 0)
             {
@@ -148,14 +143,10 @@ namespace ISA.WinFormsView
                 return;
             }
 
-            dgvCars.Rows.Clear();
-
             var sortedCars = allCars.OrderBy(car => car.Brand).ToList();
 
-            foreach (Car car in sortedCars)
-            {
-                dgvCars.Rows.Add(car.Id, car.Brand.ToString(), car.Price.ToString("C"));
-            }
+            dgvCars.DataSource = null;
+            dgvCars.DataSource = sortedCars;
         }
 
         /// <summary>
@@ -171,6 +162,13 @@ namespace ISA.WinFormsView
                 return;
             }
 
+            dgvCars.DataSource = null;
+
+            dgvCars.Columns.Clear();
+            dgvCars.Columns.Add("Id", "ID");
+            dgvCars.Columns.Add("Brand", "Бренд");
+            dgvCars.Columns.Add("Price", "Цена");
+
             dgvCars.Rows.Clear();
 
             foreach (KeyValuePair<Car.CarBrand, List<Car>> pair in groupedData)
@@ -180,11 +178,11 @@ namespace ISA.WinFormsView
 
                 int headerIndex = dgvCars.Rows.Add();
 
-                dgvCars.Rows[headerIndex].Cells[1].Value = $"Группа: {brand} (Количество: {carsInGroup.Count})";
+                dgvCars.Rows[headerIndex].Cells[0].Value = $"*Группа: {brand} (Количество: {carsInGroup.Count})";
 
                 dgvCars.Rows[headerIndex].DefaultCellStyle.Font = new Font(dgvCars.Font, FontStyle.Bold);
                 dgvCars.Rows[headerIndex].DefaultCellStyle.BackColor = Color.LightGray;
-                dgvCars.Rows[headerIndex].ReadOnly = true; 
+                dgvCars.Rows[headerIndex].ReadOnly = true;
 
                 foreach (Car car in carsInGroup)
                 {
@@ -193,6 +191,7 @@ namespace ISA.WinFormsView
                 }
             }
         }
+
 
 
         /// <summary>
@@ -208,6 +207,7 @@ namespace ISA.WinFormsView
         /// </summary>
         private void MainFormView_Load(object sender, EventArgs e)
         {
+            InitTable();
             UpdateTable();
         }
     }

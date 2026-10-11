@@ -1,0 +1,16 @@
+C:\MyProjects\ISA\ISA.DataAccessLayer\bin\Debug\net8.0\ISA.DataAccessLayer.deps.json
+C:\MyProjects\ISA\ISA.DataAccessLayer\bin\Debug\net8.0\ISA.DataAccessLayer.dll
+C:\MyProjects\ISA\ISA.DataAccessLayer\bin\Debug\net8.0\ISA.DataAccessLayer.pdb
+C:\MyProjects\ISA\ISA.DataAccessLayer\bin\Debug\net8.0\ISA.Model.dll
+C:\MyProjects\ISA\ISA.DataAccessLayer\bin\Debug\net8.0\ISA.Model.pdb
+C:\MyProjects\ISA\ISA.DataAccessLayer\obj\Debug\net8.0\ISA.DataAccessLayer.csproj.AssemblyReference.cache
+C:\MyProjects\ISA\ISA.DataAccessLayer\obj\Debug\net8.0\ISA.DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\MyProjects\ISA\ISA.DataAccessLayer\obj\Debug\net8.0\ISA.DataAccessLayer.AssemblyInfoInputs.cache
+C:\MyProjects\ISA\ISA.DataAccessLayer\obj\Debug\net8.0\ISA.DataAccessLayer.AssemblyInfo.cs
+C:\MyProjects\ISA\ISA.DataAccessLayer\obj\Debug\net8.0\ISA.DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\MyProjects\ISA\ISA.DataAccessLayer\obj\Debug\net8.0\ISA.DataAccessLayer.sourcelink.json
+C:\MyProjects\ISA\ISA.DataAccessLayer\obj\Debug\net8.0\ISA.Data.4DC73108.Up2Date
+C:\MyProjects\ISA\ISA.DataAccessLayer\obj\Debug\net8.0\ISA.DataAccessLayer.dll
+C:\MyProjects\ISA\ISA.DataAccessLayer\obj\Debug\net8.0\refint\ISA.DataAccessLayer.dll
+C:\MyProjects\ISA\ISA.DataAccessLayer\obj\Debug\net8.0\ISA.DataAccessLayer.pdb
+C:\MyProjects\ISA\ISA.DataAccessLayer\obj\Debug\net8.0\ref\ISA.DataAccessLayer.dll
