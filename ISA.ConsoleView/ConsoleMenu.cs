@@ -27,7 +27,8 @@ namespace ISA.ConsoleView
 
             using (var context = new MyDbContext(optionsBuilder.Options))
             {
-                IRepository<Car> repository = new EntityRepository<Car>(context);
+                //IRepository<Car> repository = new EntityRepository<Car>(context);
+                IRepository<Car> repository = new DapperRepository(connectionString);
                 _logic = new Logic(repository);
                 while (true)
                 {
