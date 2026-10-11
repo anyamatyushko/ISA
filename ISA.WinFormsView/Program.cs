@@ -31,8 +31,10 @@ namespace ISA.WinFormsView
             optionsBuilder.UseSqlServer(connectionString);
 
             var context = new MyDbContext(optionsBuilder.Options);
-            IRepository<Car> repository = new EntityRepository<Car>(context);
+            //IRepository<Car> repository = new EntityRepository<Car>(context);
+            IRepository<Car> repository = new DapperRepository(connectionString);
             Logic logic = new Logic(repository);
+
 
             Application.Run(new MainFormView(logic));
         }
