@@ -1,66 +1,89 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using ISA.Model;
+using ISA.BusinessLogic;
+using ISA.DataAccessLayer;
+using ISA.DataAccessLayer.EntityFrameworkCore;
+
 
 namespace ISA.ConsoleView
 {
     class Program
     {
-        private static Logic _logic = new Logic();
+        private static Logic? _logic;
 
         static void Main(string[] args)
         {
-            while (true)
+            AppDomain.CurrentDomain.SetData("DataDirectory", AppContext.BaseDirectory);
+
+            string userFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            string dbPath = System.IO.Path.Combine(userFolder, "MySharedCarDb.mdf");
+            string connectionString = $@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=MySharedCarDb;Integrated Security=true;AttachDbFileName={dbPath};";
+
+
+            var optionsBuilder = new DbContextOptionsBuilder<MyDbContext>();
+            optionsBuilder.UseSqlServer(connectionString);
+
+            using (var context = new MyDbContext(optionsBuilder.Options))
             {
-                Console.Clear();
-                Console.WriteLine("1. Вывести список всех автомобилей");
-                Console.WriteLine("2. Добавить новый автомобиль");
-                Console.WriteLine("3. Обновить данные автомобиля");
-                Console.WriteLine("4. Удалить автомобиль");
-                Console.WriteLine("5. Фильтр по бюджету");
-                Console.WriteLine("6. Группировать по бренду автомобиля");
-                Console.WriteLine("0. Выход");
-                Console.Write("\nВыберите пункт меню: ");
-
-                string input = Console.ReadLine();
-
-                switch (input)
+                IRepository<Car> repository = new EntityRepository<Car>(context);
+                _logic = new Logic(repository);
+                while (true)
                 {
-                    case "1":
-                        ShowAllCars();
-                        break;
-                    case "2":
-                        AddNewCar();
-                        break;
-                    case "3":
-                        UpdateCarData();
-                        break;
-                    case "4":
-                        DeleteCarData();
-                        break;
-                    case "5":
-                        FilterCarsByBudget();
-                        break;
-                    case "6":
-                        GroupByBrand();
-                        break;
-                    case "0":
-                        return;
-                    default:
-                        Console.WriteLine("Неверный пункт меню");
-                        Console.ReadKey();
-                        break;
+                    Console.Clear();
+                    Console.WriteLine("1. Вывести список всех автомобилей");
+                    Console.WriteLine("2. Добавить новый автомобиль");
+                    Console.WriteLine("3. Обновить данные автомобиля");
+                    Console.WriteLine("4. Удалить автомобиль");
+                    Console.WriteLine("5. Фильтр по бюджету");
+                    Console.WriteLine("6. Группировать по бренду автомобиля");
+                    Console.WriteLine("0. Выход");
+                    Console.Write("\nВыберите пункт меню: ");
+
+                    string? input = Console.ReadLine();
+
+                    switch (input)
+                    {
+                        case "1":
+                            ShowAllCars();
+                            break;
+                        case "2":
+                            AddNewCar();
+                            break;
+                        case "3":
+                            UpdateCarData();
+                            break;
+                        case "4":
+                            DeleteCarData();
+                            break;
+                        case "5":
+                            FilterCarsByBudget();
+                            break;
+                        case "6":
+                            GroupByBrand();
+                            break;
+                        case "0":
+                            return;
+                        default:
+                            Console.WriteLine("Неверный пункт меню");
+                            Console.ReadKey();
+                            break;
+                    }
                 }
             }
         }
 
+
         /// <summary>
-        /// Выводит в консоль список всех существующих автомобилей.
+        /// Очищает консоль, запрашивает у бизнес-логики все автомобили и выводит их список на экран.
         /// </summary>
+        /// <param>Метод не принимает входных параметров.</param>
+        /// <returns>Метод возвращает значение void. Результатом работы является текстовый вывод списка машин в окно консоли.</returns>
         private static void ShowAllCars()
         {
             Console.Clear();
-            List<Car> cars = _logic.GetCars();
+            List<Car> cars = _logic.GetAll();
 
             if (cars.Count == 0)
             {
@@ -78,9 +101,12 @@ namespace ISA.ConsoleView
             Console.ReadKey();
         }
 
+
         /// <summary>
-        /// Пошагово запрашивает бренд и цену, затем добавляет машину через бизнес-логику.
+        /// Запускает пошаговый ввод бренда и цены с клавиатуры, после чего отправляет данные в бизнес-логику для сохранения.
         /// </summary>
+        /// <param>Метод не принимает входных параметров.</param>
+        /// <returns>Метод возвращает значение void. Результатом работы является создание новой записи в базе данных и вывод её ID на экран.</returns>
         private static void AddNewCar()
         {
             Console.Clear();
@@ -89,7 +115,7 @@ namespace ISA.ConsoleView
 
             if (decimal.TryParse(Console.ReadLine(), out decimal price) && price >= 0)
             {
-                int newId = _logic.AddCar(brand, price);
+                int newId = _logic.Create(brand, price);
                 Console.WriteLine($"Успешно добавлено! Автомобилю присвоен ID: {newId}");
             }
             else
@@ -101,9 +127,12 @@ namespace ISA.ConsoleView
             Console.ReadKey();
         }
 
+
         /// <summary>
-        /// Запрашивает ID, новый бренд и новую цену для изменения данных машины.
+        /// Запрашивает у пользователя ID машины, проверяет её существование и позволяет изменить бренд и цену.
         /// </summary>
+        /// <param>Метод не принимает входных параметров.</param>
+        /// <returns>Метод возвращает значение void. Результатом работы является обновление полей существующей машины в базе данных.</returns>
         private static void UpdateCarData()
         {
             Console.Clear();
@@ -111,7 +140,7 @@ namespace ISA.ConsoleView
 
             if (int.TryParse(Console.ReadLine(), out int id))
             {
-                Car car = _logic.GetCarById(id);
+                Car? car = _logic.GetById(id);
                 if (car == null)
                 {
                     Console.WriteLine("Автомобиль с таким ID не найден.");
@@ -124,7 +153,7 @@ namespace ISA.ConsoleView
                     Console.Write("Введите новую цену: ");
                     if (decimal.TryParse(Console.ReadLine(), out decimal newPrice) && newPrice >= 0)
                     {
-                        _logic.UpdateCar(id, newBrand, newPrice);
+                        _logic.Update(id, newBrand, newPrice);
                         Console.WriteLine("Данные автомобиля обновлены");
                     }
                     else
@@ -143,12 +172,14 @@ namespace ISA.ConsoleView
         }
 
         /// <summary>
-        /// Запрашивает ID машины и удаляет её из системы.
+        /// Запрашивает уникальный ID автомобиля и передает его в бизнес-логику для удаления из базы данных.
         /// </summary>
+        /// <param>Метод не принимает входных параметров.</param>
+        /// <returns>Метод возвращает значение void. Результатом работы является удаление строки из таблицы базы данных и вывод сообщения об успехе.</returns>
         private static void DeleteCarData()
         {
             Console.Clear();
-            List<Car> cars = _logic.GetCars();
+            List<Car> cars = _logic.GetAll();
 
             if (cars.Count == 0)
             {
@@ -165,7 +196,7 @@ namespace ISA.ConsoleView
 
             if (int.TryParse(Console.ReadLine(), out int id))
             {
-                if (_logic.DeleteCar(id))
+                if (_logic.Delete(id))
                 {
                     Console.WriteLine("Автомобиль удален.");
                 }
@@ -183,9 +214,12 @@ namespace ISA.ConsoleView
             Console.ReadKey();
         }
 
+
         /// <summary>
-        /// Запрашивает у пользователя максимальную сумму и выводит подходящие машины.
+        /// Запрашивает максимальную сумму денег и выводит на экран список машин, цена которых не превышает этот лимит.
         /// </summary>
+        /// <param>Метод не принимает входных параметров.</param>
+        /// <returns>Метод возвращает значение void. Результатом работы является вывод отфильтрованного по цене списка автомобилей.</returns>
         private static void FilterCarsByBudget()
         {
             Console.Clear();
@@ -217,13 +251,17 @@ namespace ISA.ConsoleView
             Console.ReadKey();
         }
 
+
+
         /// <summary>
-        /// Метод, осуществляющий группировку списку по автомобилям.
+        /// Получает из бизнес-логики машины, распределенные по брендам, и красиво выводит их группами на экран.
         /// </summary>
+        /// <param>Метод не принимает входных параметров.</param>
+        /// <returns>Метод возвращает значение void. Результатом работы является древовидный вывод автомобилей, сгруппированных по маркам.</returns>
         private static void GroupByBrand()
         {
             Console.Clear();
-            List<Car> allCars = _logic.GetCars();
+            List<Car> allCars = _logic.GetAll();
 
             if (allCars.Count == 0)
             {
@@ -259,8 +297,10 @@ namespace ISA.ConsoleView
 
 
         /// <summary>
-        /// Вспомогательное текстовое меню для выбора марки машины.
+        /// Показывает пользователю список доступных марок машин и считывает его выбор с клавиатуры.
         /// </summary>
+        /// <param>Метод не принимает входных параметров.</param>
+        /// <returns>Возвращает выбранный пользователем бренд автомобиля в виде значения из перечисления.</returns>
         private static Car.CarBrand SelectBrandMenu()
         {
             while (true)
@@ -273,7 +313,7 @@ namespace ISA.ConsoleView
                 Console.WriteLine("5. Volkswagen");
                 Console.Write("Ваш выбор: ");
 
-                string choice = Console.ReadLine();
+                string? choice = Console.ReadLine();
                 switch (choice)
                 {
                     case "1": return Car.CarBrand.BMW;

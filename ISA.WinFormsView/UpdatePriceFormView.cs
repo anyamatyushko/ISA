@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using ISA.Model;
+using ISA.BusinessLogic;
 
 namespace ISA.WinFormsView
 {
@@ -31,7 +32,7 @@ namespace ISA.WinFormsView
                     return;
                 }
 
-                bool isUpdated = _logic.UpdateCar(_carId, _newBrand, enteredPrice);
+                bool isUpdated = _logic.Update(_carId, _newBrand, enteredPrice);
 
                 if (isUpdated)
                 {

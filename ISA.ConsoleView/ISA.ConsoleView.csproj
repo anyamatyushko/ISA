@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ISA.BusinessLogic\ISA.BusinessLogic.csproj" />
     <ProjectReference Include="..\ISA.DataAccessLayer\ISA.DataAccessLayer.csproj" />
     <ProjectReference Include="..\ISA.Model\ISA.Model.csproj" />
   </ItemGroup>

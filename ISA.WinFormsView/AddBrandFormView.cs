@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using ISA.Model;
+using ISA.BusinessLogic;
+
 
 namespace ISA.WinFormsView
 {

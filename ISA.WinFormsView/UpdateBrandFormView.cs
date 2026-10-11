@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using ISA.Model;
+using ISA.BusinessLogic;
+
 
 namespace ISA.WinFormsView
 {
@@ -76,7 +78,7 @@ namespace ISA.WinFormsView
         /// </summary>
         private void NextButton_Click(object sender, EventArgs e)
         {
-            Car currentCar = _logic.GetCarById(_carId);
+            Car? currentCar = _logic.GetById(_carId);
             if (currentCar != null)
             {
                 OpenUpdatePriceForm(currentCar.Brand);
