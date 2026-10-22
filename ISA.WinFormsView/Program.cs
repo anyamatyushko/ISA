@@ -16,13 +16,12 @@ namespace ISA.WinFormsView
             ApplicationConfiguration.Initialize();
 
             AppDomain.CurrentDomain.SetData("DataDirectory", AppContext.BaseDirectory);
-            // 🟢 1. Просим .NET сам определить точный путь к твоей личной папке пользователя (C:\Users\ТвоеИмя)
+         
             string userFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
 
-            // 🟢 2. Собираем идеальный, чистый путь к файлу базы данных
+
             string dbPath = System.IO.Path.Combine(userFolder, "MySharedCarDb.mdf");
 
-            // 🟢 3. Подставляем этот готовый путь в строку подключения без всяких знаков %
             string connectionString = $@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=MySharedCarDb;Integrated Security=true;AttachDbFileName={dbPath};";
 
 
