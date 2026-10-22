@@ -4,31 +4,6 @@
   "Documents": [
     {
       "AbsoluteMoniker": "D:0:0:{218168B0-5477-4E53-B4F2-36B8AB978E2D}|..\\ISA.DataAccessLayer\\ISA.DataAccessLayer.csproj|c:\\myprojects\\isa\\isa.dataaccesslayer\\dapper\\dapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A5D07A31-8184-440F-8E33-09D4E68C046A}|..\\ISA.WinFormsView\\ISA.WinFormsView.csproj|c:\\myprojects\\isa\\isa.winformsview\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BFEBAA36-AFF0-41C1-A87A-B2A6E76C7F91}|ISA.ConsoleView.csproj|c:\\myprojects\\isa\\isa.consoleview\\consolemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BFEBAA36-AFF0-41C1-A87A-B2A6E76C7F91}|ISA.ConsoleView.csproj|solutionrelative:consolemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A5D07A31-8184-440F-8E33-09D4E68C046A}|..\\ISA.WinFormsView\\ISA.WinFormsView.csproj|c:\\myprojects\\isa\\isa.winformsview\\mainformview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{89BC9257-45E3-4097-894A-BC1DD70E65A7}|..\\ISA.BusinessLogic\\ISA.BusinessLogic.csproj|c:\\myprojects\\isa\\isa.businesslogic\\logic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A5D07A31-8184-440F-8E33-09D4E68C046A}|..\\ISA.WinFormsView\\ISA.WinFormsView.csproj|c:\\myprojects\\isa\\isa.winformsview\\mainformview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{218168B0-5477-4E53-B4F2-36B8AB978E2D}|..\\ISA.DataAccessLayer\\ISA.DataAccessLayer.csproj|c:\\myprojects\\isa\\isa.dataaccesslayer\\entityframeworkcore\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{218168B0-5477-4E53-B4F2-36B8AB978E2D}|..\\ISA.DataAccessLayer\\ISA.DataAccessLayer.csproj|c:\\myprojects\\isa\\isa.dataaccesslayer\\entityframeworkcore\\entityrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{218168B0-5477-4E53-B4F2-36B8AB978E2D}|..\\ISA.DataAccessLayer\\ISA.DataAccessLayer.csproj|c:\\myprojects\\isa\\isa.dataaccesslayer\\isa.dataaccesslayer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +13,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -70,118 +45,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MainFormView.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\MainFormView.cs",
-              "RelativeDocumentMoniker": "..\\ISA.WinFormsView\\MainFormView.cs",
-              "ToolTip": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\MainFormView.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "..\\ISA.WinFormsView\\MainFormView.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-11T10:18:06.124Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Logic.cs",
-              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.BusinessLogic\\Logic.cs",
-              "RelativeDocumentMoniker": "..\\ISA.BusinessLogic\\Logic.cs",
-              "ToolTip": "C:\\MyProjects\\ISA\\ISA.BusinessLogic\\Logic.cs",
-              "RelativeToolTip": "..\\ISA.BusinessLogic\\Logic.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-11T10:17:54.314Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ISA.DataAccessLayer",
-              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.DataAccessLayer\\ISA.DataAccessLayer.csproj",
-              "RelativeDocumentMoniker": "..\\ISA.DataAccessLayer\\ISA.DataAccessLayer.csproj",
-              "ToolTip": "C:\\MyProjects\\ISA\\ISA.DataAccessLayer\\ISA.DataAccessLayer.csproj",
-              "RelativeToolTip": "..\\ISA.DataAccessLayer\\ISA.DataAccessLayer.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-10-11T09:59:48.86Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "MyDbContext.cs",
-              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.DataAccessLayer\\EntityFrameworkCore\\MyDbContext.cs",
-              "RelativeDocumentMoniker": "..\\ISA.DataAccessLayer\\EntityFrameworkCore\\MyDbContext.cs",
-              "ToolTip": "C:\\MyProjects\\ISA\\ISA.DataAccessLayer\\EntityFrameworkCore\\MyDbContext.cs",
-              "RelativeToolTip": "..\\ISA.DataAccessLayer\\EntityFrameworkCore\\MyDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-11T09:59:30.702Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "EntityRepository.cs",
-              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.DataAccessLayer\\EntityFrameworkCore\\EntityRepository.cs",
-              "RelativeDocumentMoniker": "..\\ISA.DataAccessLayer\\EntityFrameworkCore\\EntityRepository.cs",
-              "ToolTip": "C:\\MyProjects\\ISA\\ISA.DataAccessLayer\\EntityFrameworkCore\\EntityRepository.cs",
-              "RelativeToolTip": "..\\ISA.DataAccessLayer\\EntityFrameworkCore\\EntityRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-11T09:59:09.263Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "DapperRepository.cs",
               "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.DataAccessLayer\\Dapper\\DapperRepository.cs",
               "RelativeDocumentMoniker": "..\\ISA.DataAccessLayer\\Dapper\\DapperRepository.cs",
               "ToolTip": "C:\\MyProjects\\ISA\\ISA.DataAccessLayer\\Dapper\\DapperRepository.cs",
               "RelativeToolTip": "..\\ISA.DataAccessLayer\\Dapper\\DapperRepository.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAEQAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAADcAAAAAAAAAAAA5wBoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-11T09:56:35.166Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MainFormView.cs",
-              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\MainFormView.cs",
-              "RelativeDocumentMoniker": "..\\ISA.WinFormsView\\MainFormView.cs",
-              "ToolTip": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\MainFormView.cs",
-              "RelativeToolTip": "..\\ISA.WinFormsView\\MainFormView.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-11T10:18:18.937Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\Program.cs",
-              "RelativeDocumentMoniker": "..\\ISA.WinFormsView\\Program.cs",
-              "ToolTip": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\Program.cs",
-              "RelativeToolTip": "..\\ISA.WinFormsView\\Program.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwCMAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-11T10:19:13.347Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ConsoleMenu.cs",
-              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.ConsoleView\\ConsoleMenu.cs",
-              "RelativeDocumentMoniker": "ConsoleMenu.cs",
-              "ToolTip": "C:\\MyProjects\\ISA\\ISA.ConsoleView\\ConsoleMenu.cs",
-              "RelativeToolTip": "ConsoleMenu.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwB4AAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-11T10:20:24.066Z",
+              "WhenOpened": "2026-10-21T13:18:25.47Z",
               "EditorCaption": ""
             }
           ]

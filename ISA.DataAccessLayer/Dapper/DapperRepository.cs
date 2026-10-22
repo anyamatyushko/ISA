@@ -8,17 +8,9 @@ using ISA.Model;
 
 namespace ISA.DataAccessLayer
 {
-    /// <summary>
-    /// Компонент слоя доступа к данным (DAL), реализующий паттерн Repository для сущности Car с использованием Micro-ORM Dapper.
-    /// </summary>
     public class DapperRepository : IRepository<Car>
     {
         private readonly string _connectionString;
-
-        /// <summary>
-        /// Инициализирует новый экземпляр репозитория DapperRepository.
-        /// </summary>
-        /// <param name="connectionString">Строка подключения к целевой базе данных.</param>
         public DapperRepository(string connectionString)
         {
             _connectionString = connectionString;
@@ -48,10 +40,10 @@ namespace ISA.DataAccessLayer
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                // 🟢 Используем параметры @Brand и @Price. Dapper сам поймет типы и переведет enum в число!
+
                 string script = "INSERT INTO Cars (Brand, Price) VALUES (@Brand, @Price); SELECT CAST(SCOPE_IDENTITY() as int);";
 
-                // Передаем анонимный объект с параметрами
+       
                 return db.Query<int>(script, new { Brand = (int)item.Brand, Price = item.Price }).Single();
             }
         }
@@ -88,10 +80,10 @@ namespace ISA.DataAccessLayer
         /// <returns>Значение true, если запись в БД успешно обновлена, иначе false.</returns>
         public bool Update(Car item)
         {
-            // 🟢 Приводим к (int), чтобы в базу ушло число, а не текст "Volkswagen"
+         
             string script = "UPDATE Cars SET Brand = " + (int)item.Brand + ", Price = " + item.Price + " WHERE Id = " + item.Id + ";";
 
-            // Вызываем её внутренний метод выполнения скрипта
+    
             int rows = UseScript(script);
             return rows > 0;
         }
