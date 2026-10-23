@@ -10,14 +10,14 @@
         "projectUniqueName": "C:\\MyProjects\\ISA\\ISA.BusinessLogic\\ISA.BusinessLogic.csproj",
         "projectName": "ISA.BusinessLogic",
         "projectPath": "C:\\MyProjects\\ISA\\ISA.BusinessLogic\\ISA.BusinessLogic.csproj",
-        "packagesPath": "C:\\Users\\Ксю\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Anna\\.nuget\\packages\\",
         "outputPath": "C:\\MyProjects\\ISA\\ISA.BusinessLogic\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Ксю\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Anna\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -56,6 +56,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Ninject": {
+              "target": "Package",
+              "version": "[3.3.6, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -72,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.318/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -82,14 +88,14 @@
         "projectUniqueName": "C:\\MyProjects\\ISA\\ISA.ConsoleView\\ISA.ConsoleView.csproj",
         "projectName": "ISA.ConsoleView",
         "projectPath": "C:\\MyProjects\\ISA\\ISA.ConsoleView\\ISA.ConsoleView.csproj",
-        "packagesPath": "C:\\Users\\Ксю\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Anna\\.nuget\\packages\\",
         "outputPath": "C:\\MyProjects\\ISA\\ISA.ConsoleView\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Ксю\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Anna\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -131,6 +137,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Ninject": {
+              "target": "Package",
+              "version": "[3.3.6, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -147,7 +159,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.318/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -157,14 +169,14 @@
         "projectUniqueName": "C:\\MyProjects\\ISA\\ISA.DataAccessLayer\\ISA.DataAccessLayer.csproj",
         "projectName": "ISA.DataAccessLayer",
         "projectPath": "C:\\MyProjects\\ISA\\ISA.DataAccessLayer\\ISA.DataAccessLayer.csproj",
-        "packagesPath": "C:\\Users\\Ксю\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Anna\\.nuget\\packages\\",
         "outputPath": "C:\\MyProjects\\ISA\\ISA.DataAccessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Ксю\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Anna\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -234,7 +246,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.318/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -244,14 +256,14 @@
         "projectUniqueName": "C:\\MyProjects\\ISA\\ISA.Model\\ISA.Model.csproj",
         "projectName": "ISA.Model",
         "projectPath": "C:\\MyProjects\\ISA\\ISA.Model\\ISA.Model.csproj",
-        "packagesPath": "C:\\Users\\Ксю\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Anna\\.nuget\\packages\\",
         "outputPath": "C:\\MyProjects\\ISA\\ISA.Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Ксю\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Anna\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -299,7 +311,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.318/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

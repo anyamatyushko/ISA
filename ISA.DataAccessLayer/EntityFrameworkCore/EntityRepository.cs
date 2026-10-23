@@ -20,7 +20,6 @@ namespace ISA.DataAccessLayer.EntityFrameworkCore
             _context = context;
         }
 
-
         /// <summary>
         /// Добавляет (создает) новую запись сущности в соответствующую таблицу базы данных.
         /// </summary>
@@ -34,8 +33,6 @@ namespace ISA.DataAccessLayer.EntityFrameworkCore
             return item.Id;
         }
 
-
-
         /// <summary>
         /// Находит одну конкретную запись в таблице базы данных по её уникальному идентификатору (ID).
         /// </summary>
@@ -46,8 +43,6 @@ namespace ISA.DataAccessLayer.EntityFrameworkCore
             return _context.Set<TEntity>().Find(id);
         }
 
-
-
         /// <summary>
         /// Извлекает абсолютно все строки из таблицы базы данных и преобразует их в стандартный список C#.
         /// </summary>
@@ -57,7 +52,6 @@ namespace ISA.DataAccessLayer.EntityFrameworkCore
         {
             return _context.Set<TEntity>().ToList();
         }
-
 
         /// <summary>
         /// Обновляет измененные поля существующего в базе данных объекта на основе совпадения его идентификатора.
@@ -71,7 +65,6 @@ namespace ISA.DataAccessLayer.EntityFrameworkCore
 
             return rowsAffected > 0;
         }
-
 
         /// <summary>
         /// Удаляет существующую запись из таблицы базы данных по её уникальному идентификатору (ID).

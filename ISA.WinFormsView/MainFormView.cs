@@ -10,9 +10,9 @@ namespace ISA.WinFormsView
     public partial class MainFormView : Form
     {
 
-        private readonly Logic _logic;
+        private readonly ILogic _logic;
 
-        public MainFormView(Logic logic)
+        public MainFormView(ILogic logic)
         {
             InitializeComponent();
             _logic = logic;
@@ -59,8 +59,6 @@ namespace ISA.WinFormsView
 
             dgvCars.DataSource = carsToShow;
         }
-
-
 
         /// <summary>
         /// Обрабатывает событие клика по кнопке "Создать".
@@ -191,8 +189,6 @@ namespace ISA.WinFormsView
                 }
             }
         }
-
-
 
         /// <summary>
         /// Обрабатывает событие клика по кнопке "Вернуть в исходное состояние". 

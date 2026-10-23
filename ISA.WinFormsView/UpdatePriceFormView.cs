@@ -7,10 +7,10 @@ namespace ISA.WinFormsView
 {
     public partial class UpdatePriceFormView : Form
     {
-        private Logic _logic;
+        private ILogic _logic;
         private int _carId;
         private Car.CarBrand _newBrand;
-        public UpdatePriceFormView(Logic logic, int carId, Car.CarBrand newBrand)
+        public UpdatePriceFormView(ILogic logic, int carId, Car.CarBrand newBrand)
         {
             InitializeComponent();
             _logic = logic;

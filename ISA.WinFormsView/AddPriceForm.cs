@@ -8,10 +8,10 @@ namespace ISA.WinFormsView
 {
     public partial class AddPriceFormView : Form
     {
-        private Logic _logic;
+        private ILogic _logic;
         private Car.CarBrand _selectedBrand;
 
-        public AddPriceFormView(Logic logic, Car.CarBrand brand)
+        public AddPriceFormView(ILogic logic, Car.CarBrand brand)
         {
             InitializeComponent();
             _logic = logic;

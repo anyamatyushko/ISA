@@ -67,3 +67,4 @@ C:\MyProjects\ISA\ISA.WinFormsView\bin\Debug\net8.0-windows\ISA.DataAccessLayer.
 C:\MyProjects\ISA\ISA.WinFormsView\bin\Debug\net8.0-windows\ISA.BusinessLogic.pdb
 C:\MyProjects\ISA\ISA.WinFormsView\bin\Debug\net8.0-windows\ISA.DataAccessLayer.pdb
 C:\MyProjects\ISA\ISA.WinFormsView\bin\Debug\net8.0-windows\Dapper.dll
+C:\MyProjects\ISA\ISA.WinFormsView\bin\Debug\net8.0-windows\Ninject.dll
