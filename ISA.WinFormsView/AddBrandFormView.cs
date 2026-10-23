@@ -8,8 +8,8 @@ namespace ISA.WinFormsView
 {
     public partial class AddBrandFormView : Form
     {
-        private Logic _logic;
-        public AddBrandFormView(Logic logic)
+        private ILogic _logic;
+        public AddBrandFormView(ILogic logic)
         {
             InitializeComponent();
             _logic = logic;

@@ -1,17 +1,18 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using ISA.Model;
-using ISA.BusinessLogic;
+﻿using ISA.BusinessLogic;
 using ISA.DataAccessLayer;
 using ISA.DataAccessLayer.EntityFrameworkCore;
+using ISA.Model;
+using Microsoft.EntityFrameworkCore;
+using Ninject;
+using System;
+using System.Collections.Generic;
 
 
 namespace ISA.ConsoleView
 {
     class Program
     {
-        private static Logic? _logic;
+        private static ILogic? _logic;
 
         static void Main(string[] args)
         {
@@ -21,16 +22,24 @@ namespace ISA.ConsoleView
             string dbPath = System.IO.Path.Combine(userFolder, "MySharedCarDb.mdf");
             string connectionString = $@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=MySharedCarDb;Integrated Security=true;AttachDbFileName={dbPath};";
 
+            // Далее все, что связано с подключением Ninject
+            var kernel = new StandardKernel();
 
             var optionsBuilder = new DbContextOptionsBuilder<MyDbContext>();
             optionsBuilder.UseSqlServer(connectionString);
 
-            using (var context = new MyDbContext(optionsBuilder.Options))
-            {
-                //IRepository<Car> repository = new EntityRepository<Car>(context);
-                IRepository<Car> repository = new DapperRepository(connectionString);
-                _logic = new Logic(repository);
-                while (true)
+            kernel.Bind<MyDbContext>().ToSelf().WithConstructorArgument("options", optionsBuilder.Options);
+            kernel.Bind<IRepository<Car>>().To<EntityRepository<Car>>().InSingletonScope(); // Репозиторий как синглтон
+
+            // ЕСЛИ НУЖЕН DAPPER: закомментируй две строчки выше и раскомментируй эту:
+            // kernel.Bind<IRepository<Car>>().To<DapperRepository>().WithConstructorArgument("connectionString", connectionString).InSingletonScope();
+
+            kernel.Bind<ILogic>().To<Logic>();
+
+            _logic = kernel.Get<ILogic>();
+
+
+            while (true)
                 {
                     Console.Clear();
                     Console.WriteLine("1. Вывести список всех автомобилей");
@@ -72,9 +81,8 @@ namespace ISA.ConsoleView
                             break;
                     }
                 }
-            }
+            
         }
-
 
         /// <summary>
         /// Очищает консоль, запрашивает у бизнес-логики все автомобили и выводит их список на экран.
@@ -102,7 +110,6 @@ namespace ISA.ConsoleView
             Console.ReadKey();
         }
 
-
         /// <summary>
         /// Запускает пошаговый ввод бренда и цены с клавиатуры, после чего отправляет данные в бизнес-логику для сохранения.
         /// </summary>
@@ -127,7 +134,6 @@ namespace ISA.ConsoleView
             Console.WriteLine("\nНажмите любую клавишу");
             Console.ReadKey();
         }
-
 
         /// <summary>
         /// Запрашивает у пользователя ID машины, проверяет её существование и позволяет изменить бренд и цену.
@@ -215,7 +221,6 @@ namespace ISA.ConsoleView
             Console.ReadKey();
         }
 
-
         /// <summary>
         /// Запрашивает максимальную сумму денег и выводит на экран список машин, цена которых не превышает этот лимит.
         /// </summary>
@@ -251,8 +256,6 @@ namespace ISA.ConsoleView
             Console.WriteLine("\nНажмите любую клавишу");
             Console.ReadKey();
         }
-
-
 
         /// <summary>
         /// Получает из бизнес-логики машины, распределенные по брендам, и красиво выводит их группами на экран.
@@ -295,7 +298,6 @@ namespace ISA.ConsoleView
             Console.WriteLine("\nНажмите любую клавишу, чтобы вернуться в меню...");
             Console.ReadKey();
         }
-
 
         /// <summary>
         /// Показывает пользователю список доступных марок машин и считывает его выбор с клавиатуры.

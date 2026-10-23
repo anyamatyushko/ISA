@@ -5,7 +5,7 @@ using ISA.DataAccessLayer;
 
 namespace ISA.BusinessLogic
 {
-    public class Logic
+    public class Logic: ILogic
     {
         private readonly IRepository<Car> _carRepository;
 
@@ -13,7 +13,6 @@ namespace ISA.BusinessLogic
         {
             _carRepository = carRepository;
         }
-
 
         /// <summary>
         /// Универсальный метод для создания (добавления) нового автомобиля в систему с проверкой.
@@ -85,7 +84,6 @@ namespace ISA.BusinessLogic
             return _carRepository.GetAll();
         }
 
-
         /// <summary>
         /// Бизнес-функция для группировки всех существующих автомобилей по их маркам.
         /// </summary>
@@ -105,7 +103,6 @@ namespace ISA.BusinessLogic
             }
             return result;
         }
-
 
         /// <summary>
         /// Бизнес-функция фильтрации для поиска автомобилей, стоимость которых не превышает заданный бюджет покупателя.
