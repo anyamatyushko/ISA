@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ISA.ConsoleView")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a1e05087dacb905c1b752d1438061538e37d17e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3db676d4b87d5f8dacebd5b33d9fef3d84e4388c")]
 [assembly: System.Reflection.AssemblyProductAttribute("ISA.ConsoleView")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ISA.ConsoleView")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

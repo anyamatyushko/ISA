@@ -1,11 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\MyProjects\\ISA\\ISA.ConsoleView\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{218168B0-5477-4E53-B4F2-36B8AB978E2D}|..\\ISA.DataAccessLayer\\ISA.DataAccessLayer.csproj|c:\\myprojects\\isa\\isa.dataaccesslayer\\dapper\\dapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -13,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,19 +38,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DapperRepository.cs",
-              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.DataAccessLayer\\Dapper\\DapperRepository.cs",
-              "RelativeDocumentMoniker": "..\\ISA.DataAccessLayer\\Dapper\\DapperRepository.cs",
-              "ToolTip": "C:\\MyProjects\\ISA\\ISA.DataAccessLayer\\Dapper\\DapperRepository.cs",
-              "RelativeToolTip": "..\\ISA.DataAccessLayer\\Dapper\\DapperRepository.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAA5wBoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-21T13:18:25.47Z",
-              "EditorCaption": ""
             }
           ]
         }
