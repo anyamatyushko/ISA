@@ -23,18 +23,11 @@ namespace ISA.ConsoleView
             string connectionString = $@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=MySharedCarDb;Integrated Security=true;AttachDbFileName={dbPath};";
 
             // Далее все, что связано с подключением Ninject
-            var kernel = new StandardKernel();
+            var kernel = new StandardKernel(new SimpleConfigModule());
 
             var optionsBuilder = new DbContextOptionsBuilder<MyDbContext>();
             optionsBuilder.UseSqlServer(connectionString);
-
             kernel.Bind<MyDbContext>().ToSelf().WithConstructorArgument("options", optionsBuilder.Options);
-            kernel.Bind<IRepository<Car>>().To<EntityRepository<Car>>().InSingletonScope(); // Репозиторий как синглтон
-
-            // ЕСЛИ НУЖЕН DAPPER: закомментируй две строчки выше и раскомментируй эту:
-            // kernel.Bind<IRepository<Car>>().To<DapperRepository>().WithConstructorArgument("connectionString", connectionString).InSingletonScope();
-
-            kernel.Bind<ILogic>().To<Logic>();
 
             _logic = kernel.Get<ILogic>();
 
