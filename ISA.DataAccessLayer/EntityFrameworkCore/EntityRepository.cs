@@ -60,6 +60,7 @@ namespace ISA.DataAccessLayer.EntityFrameworkCore
         /// <returns>Значение true, если запись с таким ID существовала и данные успешно перезаписались в базе; в противном случае — false.</returns>
         public bool Update(TEntity item)
         {
+            _context.ChangeTracker.Clear();
             _context.Set<TEntity>().Update(item);
             int rowsAffected = _context.SaveChanges();
 

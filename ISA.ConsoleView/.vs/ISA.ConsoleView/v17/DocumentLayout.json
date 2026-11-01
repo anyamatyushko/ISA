@@ -1,7 +1,45 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\MyProjects\\ISA\\ISA.ConsoleView\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{89BC9257-45E3-4097-894A-BC1DD70E65A7}|..\\ISA.BusinessLogic\\ISA.BusinessLogic.csproj|c:\\myprojects\\isa\\isa.businesslogic\\logic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89BC9257-45E3-4097-894A-BC1DD70E65A7}|..\\ISA.BusinessLogic\\ISA.BusinessLogic.csproj|c:\\myprojects\\isa\\isa.businesslogic\\simpleconfigmodule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89BC9257-45E3-4097-894A-BC1DD70E65A7}|..\\ISA.BusinessLogic\\ISA.BusinessLogic.csproj|c:\\myprojects\\isa\\isa.businesslogic\\caranalytics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5D07A31-8184-440F-8E33-09D4E68C046A}|..\\ISA.WinFormsView\\ISA.WinFormsView.csproj|c:\\myprojects\\isa\\isa.winformsview\\updatepriceformview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5D07A31-8184-440F-8E33-09D4E68C046A}|..\\ISA.WinFormsView\\ISA.WinFormsView.csproj|c:\\myprojects\\isa\\isa.winformsview\\updatebrandformview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5D07A31-8184-440F-8E33-09D4E68C046A}|..\\ISA.WinFormsView\\ISA.WinFormsView.csproj|c:\\myprojects\\isa\\isa.winformsview\\budgetformview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5D07A31-8184-440F-8E33-09D4E68C046A}|..\\ISA.WinFormsView\\ISA.WinFormsView.csproj|c:\\myprojects\\isa\\isa.winformsview\\addpriceform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5D07A31-8184-440F-8E33-09D4E68C046A}|..\\ISA.WinFormsView\\ISA.WinFormsView.csproj|c:\\myprojects\\isa\\isa.winformsview\\addbrandformview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5D07A31-8184-440F-8E33-09D4E68C046A}|..\\ISA.WinFormsView\\ISA.WinFormsView.csproj|c:\\myprojects\\isa\\isa.winformsview\\mainformview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEBAA36-AFF0-41C1-A87A-B2A6E76C7F91}|ISA.ConsoleView.csproj|c:\\myprojects\\isa\\isa.consoleview\\consolemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEBAA36-AFF0-41C1-A87A-B2A6E76C7F91}|ISA.ConsoleView.csproj|solutionrelative:consolemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5D07A31-8184-440F-8E33-09D4E68C046A}|..\\ISA.WinFormsView\\ISA.WinFormsView.csproj|c:\\myprojects\\isa\\isa.winformsview\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89BC9257-45E3-4097-894A-BC1DD70E65A7}|..\\ISA.BusinessLogic\\ISA.BusinessLogic.csproj|c:\\myprojects\\isa\\isa.businesslogic\\ilogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -9,7 +47,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,6 +76,162 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UpdatePriceFormView.cs",
+              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\UpdatePriceFormView.cs",
+              "RelativeDocumentMoniker": "..\\ISA.WinFormsView\\UpdatePriceFormView.cs",
+              "ToolTip": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\UpdatePriceFormView.cs",
+              "RelativeToolTip": "..\\ISA.WinFormsView\\UpdatePriceFormView.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-01T15:16:56.514Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UpdateBrandFormView.cs",
+              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\UpdateBrandFormView.cs",
+              "RelativeDocumentMoniker": "..\\ISA.WinFormsView\\UpdateBrandFormView.cs",
+              "ToolTip": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\UpdateBrandFormView.cs",
+              "RelativeToolTip": "..\\ISA.WinFormsView\\UpdateBrandFormView.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAA5wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-01T15:16:43.209Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SimpleConfigModule.cs",
+              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.BusinessLogic\\SimpleConfigModule.cs",
+              "RelativeDocumentMoniker": "..\\ISA.BusinessLogic\\SimpleConfigModule.cs",
+              "ToolTip": "C:\\MyProjects\\ISA\\ISA.BusinessLogic\\SimpleConfigModule.cs",
+              "RelativeToolTip": "..\\ISA.BusinessLogic\\SimpleConfigModule.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-01T14:47:33.201Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Logic.cs",
+              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.BusinessLogic\\Logic.cs",
+              "RelativeDocumentMoniker": "..\\ISA.BusinessLogic\\Logic.cs",
+              "ToolTip": "C:\\MyProjects\\ISA\\ISA.BusinessLogic\\Logic.cs",
+              "RelativeToolTip": "..\\ISA.BusinessLogic\\Logic.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-01T15:09:27.656Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CarAnalytics.cs",
+              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.BusinessLogic\\CarAnalytics.cs",
+              "RelativeDocumentMoniker": "..\\ISA.BusinessLogic\\CarAnalytics.cs",
+              "ToolTip": "C:\\MyProjects\\ISA\\ISA.BusinessLogic\\CarAnalytics.cs",
+              "RelativeToolTip": "..\\ISA.BusinessLogic\\CarAnalytics.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-01T15:09:15.325Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BudgetFormView.cs",
+              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\BudgetFormView.cs",
+              "RelativeDocumentMoniker": "..\\ISA.WinFormsView\\BudgetFormView.cs",
+              "ToolTip": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\BudgetFormView.cs",
+              "RelativeToolTip": "..\\ISA.WinFormsView\\BudgetFormView.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-01T15:16:33.365Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AddPriceForm.cs",
+              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\AddPriceForm.cs",
+              "RelativeDocumentMoniker": "..\\ISA.WinFormsView\\AddPriceForm.cs",
+              "ToolTip": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\AddPriceForm.cs",
+              "RelativeToolTip": "..\\ISA.WinFormsView\\AddPriceForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-01T15:15:17.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MainFormView.cs",
+              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\MainFormView.cs",
+              "RelativeDocumentMoniker": "..\\ISA.WinFormsView\\MainFormView.cs",
+              "ToolTip": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\MainFormView.cs",
+              "RelativeToolTip": "..\\ISA.WinFormsView\\MainFormView.cs",
+              "ViewState": "AgIAALUAAAAAAAAAAAAcwBIAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-01T15:13:14.512Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\Program.cs",
+              "RelativeDocumentMoniker": "..\\ISA.WinFormsView\\Program.cs",
+              "ToolTip": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\Program.cs",
+              "RelativeToolTip": "..\\ISA.WinFormsView\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-01T14:40:34.702Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ILogic.cs",
+              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.BusinessLogic\\ILogic.cs",
+              "RelativeDocumentMoniker": "..\\ISA.BusinessLogic\\ILogic.cs",
+              "ToolTip": "C:\\MyProjects\\ISA\\ISA.BusinessLogic\\ILogic.cs",
+              "RelativeToolTip": "..\\ISA.BusinessLogic\\ILogic.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-01T14:39:25.274Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AddBrandFormView.cs",
+              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\AddBrandFormView.cs",
+              "RelativeDocumentMoniker": "..\\ISA.WinFormsView\\AddBrandFormView.cs",
+              "ToolTip": "C:\\MyProjects\\ISA\\ISA.WinFormsView\\AddBrandFormView.cs",
+              "RelativeToolTip": "..\\ISA.WinFormsView\\AddBrandFormView.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-01T14:40:53.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ConsoleMenu.cs",
+              "DocumentMoniker": "C:\\MyProjects\\ISA\\ISA.ConsoleView\\ConsoleMenu.cs",
+              "RelativeDocumentMoniker": "ConsoleMenu.cs",
+              "ToolTip": "C:\\MyProjects\\ISA\\ISA.ConsoleView\\ConsoleMenu.cs",
+              "RelativeToolTip": "ConsoleMenu.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAwwCoBAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-01T14:39:00.836Z",
+              "EditorCaption": ""
             }
           ]
         }

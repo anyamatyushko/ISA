@@ -8,7 +8,7 @@ namespace ISA.WinFormsView
 {
     public partial class AddPriceFormView : Form
     {
-        private ILogic _logic;
+        private readonly ILogic _logic;
         private Car.CarBrand _selectedBrand;
 
         public AddPriceFormView(ILogic logic, Car.CarBrand brand)
