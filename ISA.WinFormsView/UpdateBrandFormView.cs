@@ -8,7 +8,7 @@ namespace ISA.WinFormsView
 {
     public partial class UpdateBrandFormView : Form
     {
-        private ILogic _logic;
+        private readonly ILogic _logic;
         private int _carId;
         public UpdateBrandFormView(ILogic logic, int carId)
         {

@@ -1,58 +1,17 @@
-﻿using System.Collections.Generic;
-using ISA.Model;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ISA.BusinessLogic
 {
-    public interface ILogic
+    /// <summary>
+    /// Единая точка доступа (Матрешка/Фасад) для работы с системой автомобилей.
+    /// Объединяет в себе функции учета (ICarService) и аналитики (ICarAnalytics).
+    /// </summary>
+    public interface ILogic: ICarService, ICarAnalytics
     {
-        /// <summary>
-        /// Универсальный метод для создания (добавления) нового автомобиля в систему с проверкой.
-        /// </summary>
-        /// <param name="brand">Марка автомобиля.</param>
-        /// <param name="price">Стоимость автомобиля.</param>
-        /// <returns>Уникальный числовой идентификатор (ID), сгенерированный базой данных для нового автомобиля.</returns>
-        int Create(Car.CarBrand brand, decimal price);
 
-        /// <summary>
-        /// Универсальный метод для поиска автомобиля в базе данных по его уникальному идентификатору.
-        /// </summary>
-        /// <param name="id">Уникальный числовой идентификатор (ID) автомобиля.</param>
-        /// <returns>Объект автомобиля, если он найден; в противном случае — null.</returns>
-        Car? GetById(int id);
-
-        /// <summary>
-        /// Универсальный метод для обновления бренда и стоимости существующего автомобиля по его ID.
-        /// </summary>
-        /// <param name="id">Уникальный числовой идентификатор (ID) автомобиля, данные которого нужно изменить.</param>
-        /// <param name="newBrand">Новая марка автомобиля.</param>
-        /// <param name="newPrice">Новая стоимость автомобиля.</param>
-        /// <returns>Значение true, если данные автомобиля успешно обновлены; в противном случае — false.</returns>
-        bool Update(int id, Car.CarBrand newBrand, decimal newPrice);
-
-        /// <summary>
-        /// Универсальный метод для удаления автомобиля из системы по его уникальному идентификатору.
-        /// </summary>
-        /// <param name="id">Уникальный числовой идентификатор (ID) автомобиля, который необходимо удалить.</param>
-        /// <returns>Значение true, если автомобиль успешно удален; в противном случае — false.</returns>
-        bool Delete(int id);
-
-        /// <summary>
-        /// Универсальный метод для извлечения полного списка всех автомобилей, хранящихся в базе данных.
-        /// </summary>
-        /// <returns>Список, содержащий все автомобили из базы данных.</returns>
-        List<Car> GetAll();
-
-        /// <summary>
-        /// Бизнес-функция для группировки всех существующих автомобилей по их маркам (брендам).
-        /// </summary>
-        /// <returns>Словарь, где ключом является марка автомобиля, а значением — список автомобилей этой марки.</returns>
-        Dictionary<Car.CarBrand, List<Car>> GroupByBrand();
-
-        /// <summary>
-        /// Бизнес-функция фильтрации для поиска автомобилей, стоимость которых не превышает заданный бюджет покупателя.
-        /// </summary>
-        /// <param name="maxBudget">Максимальная сумма денег (бюджет), которую готов потратить покупатель.</param>
-        /// <returns>Список, содержащий автомобили, подходящие под указанный ценовой лимит.</returns>
-        List<Car> GetCarByBudget(decimal maxBudget);
     }
 }

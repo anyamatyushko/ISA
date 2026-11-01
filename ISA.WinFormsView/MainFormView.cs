@@ -11,6 +11,7 @@ namespace ISA.WinFormsView
     {
 
         private readonly ILogic _logic;
+      
 
         public MainFormView(ILogic logic)
         {

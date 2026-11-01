@@ -12,7 +12,7 @@ namespace ISA.ConsoleView
 {
     class Program
     {
-        private static ILogic? _logic;
+        private static ILogic _logic;
 
         static void Main(string[] args)
         {
@@ -22,15 +22,10 @@ namespace ISA.ConsoleView
             string dbPath = System.IO.Path.Combine(userFolder, "MySharedCarDb.mdf");
             string connectionString = $@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=MySharedCarDb;Integrated Security=true;AttachDbFileName={dbPath};";
 
-            // Далее все, что связано с подключением Ninject
-            var kernel = new StandardKernel(new SimpleConfigModule());
 
-            var optionsBuilder = new DbContextOptionsBuilder<MyDbContext>();
-            optionsBuilder.UseSqlServer(connectionString);
-            kernel.Bind<MyDbContext>().ToSelf().WithConstructorArgument("options", optionsBuilder.Options);
+            var kernel = new StandardKernel(new SimpleConfigModule(connectionString));
 
             _logic = kernel.Get<ILogic>();
-
 
             while (true)
                 {

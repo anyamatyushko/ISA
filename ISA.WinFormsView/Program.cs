@@ -23,14 +23,10 @@ namespace ISA.WinFormsView
             string connectionString = $@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=MySharedCarDb;Integrated Security=true;AttachDbFilename={dbPath};";
 
             // Здесь тоже настраиваю Ninject
-            var kernel = new StandardKernel(new SimpleConfigModule());
+            var kernel = new StandardKernel(new SimpleConfigModule(connectionString));
 
-            var optionsBuilder = new DbContextOptionsBuilder<MyDbContext>();
-            optionsBuilder.UseSqlServer(connectionString);
-            kernel.Bind<MyDbContext>().ToSelf().WithConstructorArgument("options", optionsBuilder.Options);
 
             ILogic logic = kernel.Get<ILogic>();
-
             Application.Run(new MainFormView(logic));
         }
     }

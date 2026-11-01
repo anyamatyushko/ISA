@@ -1,129 +1,102 @@
 ﻿using System;
 using System.Collections.Generic;
 using ISA.Model;
-using ISA.DataAccessLayer;
 
 namespace ISA.BusinessLogic
 {
-    public class Logic: ILogic
+    /// <summary>
+    /// Реализация единой точки доступа (Фасада) ILogic. 
+    /// Класс не содержит собственной бизнес-логики, а делегирует (перенаправляет) все вызовы 
+    /// специализированным сервисам учета и аналитики.
+    /// </summary>
+    public class Logic : ILogic
     {
-        private readonly IRepository<Car> _carRepository;
-
-        public Logic(IRepository<Car> carRepository)
-        {
-            _carRepository = carRepository;
-        }
+        private readonly ICarService _carService;
+        private readonly ICarAnalytics _carAnalytics;
 
         /// <summary>
-        /// Универсальный метод для создания (добавления) нового автомобиля в систему с проверкой.
+        /// Инициализирует фасадную логику и внедряет необходимые сервисы через DI-контейнер.
+        /// </summary>
+        /// <param name="carService">Специализированный сервис для CRUD-операций и учета автомобилей.</param>
+        /// <param name="carAnalytics">Специализированный сервис для аналитических бизнес-функций.</param>
+        public Logic(ICarService carService, ICarAnalytics carAnalytics)
+        {
+            _carService = carService;
+            _carAnalytics = carAnalytics;
+        }
+
+
+
+        /// <summary>
+        /// Перенаправляет запрос на создание нового автомобиля с проверкой в сервис учета.
         /// </summary>
         /// <param name="brand">Марка автомобиля.</param>
         /// <param name="price">Стоимость автомобиля.</param>
-        /// <returns>Уникальный числовой идентификатор (ID), сгенерированный базой данных для нового автомобиля.</returns>
+        /// <returns>Уникальный числовой идентификатор (ID), сгенерированный для нового автомобиля.</returns>
         public int Create(Car.CarBrand brand, decimal price)
         {
-            if (price <= 0)
-                throw new ArgumentException("Стоимость должна быть больше нуля!");
-
-            Car newCar = new Car
-            {
-                Brand = brand,
-                Price = price
-            };
-
-            return _carRepository.Create(newCar);
+            return _carService.Create(brand, price);
         }
 
         /// <summary>
-        /// Универсальный метод для поиска автомобиля в базе данных по его уникальному идентификатору.
+        /// Перенаправляет запрос на поиск автомобиля по его уникальному идентификатору в сервис учета.
         /// </summary>
-        /// <param name="id">Числовой идентификатор автомобиля, который требуется найти.</param>
-        /// <returns>Объект класса Car, если автомобиль найден/null.</returns>
+        /// <param name="id">Уникальный числовой идентификатор (ID) автомобиля.</param>
+        /// <returns>Объект автомобиля, если он найден; в противном случае — null.</returns>
         public Car? GetById(int id)
         {
-            return _carRepository.GetById(id);
+            return _carService.GetById(id);
         }
 
         /// <summary>
-        /// Универсальный метод для обновления бренда и стоимости существующего автомобиля по его ID.
+        /// Перенаправляет запрос на извлечение полного списка всех автомобилей в сервис учета.
         /// </summary>
-        /// <param name="id">Идентификатор изменяемого автомобиля.</param>
-        /// <param name="newBrand">Новая марка автомобиля.</param>
-        /// <param name="newPrice">Новая стоимость автомобиля.</param>
-        /// <returns>Значение true, если автомобиль успешно найден в базе и его данные обновлены/false.</returns>
-        public bool Update(int id, Car.CarBrand newBrand, decimal newPrice)
-        {
-            if (newPrice <= 0)
-                throw new ArgumentException("Стоимость должна быть больше нуля!");
-
-            Car carToUpdate = _carRepository.GetById(id);
-            if (carToUpdate == null) return false;
-
-            carToUpdate.Brand = newBrand;
-            carToUpdate.Price = newPrice;
-
-            return _carRepository.Update(carToUpdate);
-        }
-
-        /// <summary>
-        /// Универсальный метод для удаления автомобиля из системы по его уникальному идентификатору.
-        /// </summary>
-        /// <param name="id">Идентификатор автомобиля, который подлежит удалению.</param>
-        /// <returns>Значение true, если автомобиль был найден и успешно удален из базы данных/false.</returns>
-        public bool Delete(int id)
-        {
-            return _carRepository.Delete(id);
-        }
-
-        /// <summary>
-        /// Универсальный метод для извлечения полного списка всех автомобилей, хранящихся в базе данных.
-        /// </summary>
-        /// <returns>Список Car, содержащий все существующие в базе данных автомобили.</returns>
+        /// <returns>Список, содержащий все автомобили из базы данных.</returns>
         public List<Car> GetAll()
         {
-            return _carRepository.GetAll();
+            return _carService.GetAll();
         }
 
         /// <summary>
-        /// Бизнес-функция для группировки всех существующих автомобилей по их маркам.
+        /// Перенаправляет запрос на обновление данных существующего автомобиля в сервис учета.
         /// </summary>
-        /// <returns>Словарь, где ключом является бренд автомобиля, а значением — список машин, принадлежащих этому бренду.</returns>
+        /// <param name="id">Уникальный числовой идентификатор (ID) автомобиля, данные которого нужно изменить.</param>
+        /// <param name="newBrand">Новая марка автомобиля.</param>
+        /// <param name="newPrice">Новая стоимость автомобиля.</param>
+        /// <returns>Значение true, если данные автомобиля успешно обновлены; в противном случае — false.</returns>
+        public bool Update(int id, Car.CarBrand newBrand, decimal newPrice)
+        {
+            return _carService.Update(id, newBrand, newPrice);
+        }
+
+        /// <summary>
+        /// Перенаправляет запрос на удаление автомобиля по его уникальному идентификатору в сервис учета.
+        /// </summary>
+        /// <param name="id">Уникальный числовой идентификатор (ID) автомобиля, который необходимо удалить.</param>
+        /// <returns>Значение true, если автомобиль успешно удален; в противном случае — false.</returns>
+        public bool Delete(int id)
+        {
+            return _carService.Delete(id);
+        }
+
+        /// <summary>
+        /// Перенаправляет запрос на группировку всех автомобилей по их маркам в сервис аналитики.
+        /// </summary>
+        /// <returns>Словарь, где ключом является марка автомобиля, а значением — список автомобилей этой марки.</returns>
         public Dictionary<Car.CarBrand, List<Car>> GroupByBrand()
         {
-            Dictionary<Car.CarBrand, List<Car>> result = new Dictionary<Car.CarBrand, List<Car>>();
-            List<Car> allCars = _carRepository.GetAll();
-
-            foreach (Car c in allCars)
-            {
-                if (!result.ContainsKey(c.Brand))
-                {
-                    result.Add(c.Brand, new List<Car>());
-                }
-                result[c.Brand].Add(c);
-            }
-            return result;
+            return _carAnalytics.GroupByBrand();
         }
 
         /// <summary>
-        /// Бизнес-функция фильтрации для поиска автомобилей, стоимость которых не превышает заданный бюджет покупателя.
+        /// Перенаправляет запрос на поиск автомобилей, проходящих по бюджету покупателя, в сервис аналитики.
         /// </summary>
-        /// <param name="maxBudget">Максимальная сумма денег, которую покупатель готов потратить.</param>
-        /// <returns>Список Car, содержащий только те автомобили, цена которых меньше или равна указанному бюджету.</returns>
+        /// <param name="maxBudget">Максимальная сумма денег (бюджет), которую готов потратить покупатель.</param>
+        /// <returns>Список, содержащий автомобили, подходящие под указанный ценовой лимит.</returns>
         public List<Car> GetCarByBudget(decimal maxBudget)
         {
-            List<Car> suitableCars = new List<Car>();
-            List<Car> allCars = _carRepository.GetAll();
-
-            foreach (Car c in allCars)
-            {
-                if (c.Price <= maxBudget)
-                {
-                    suitableCars.Add(c);
-                }
-            }
-            return suitableCars;
+            return _carAnalytics.GetCarByBudget(maxBudget);
         }
+
     }
 }
-
-
