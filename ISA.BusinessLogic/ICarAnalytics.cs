@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace ISA.BusinessLogic
 {
-    /// <summary>
-    /// Интерфейс для выполнения аналитических бизнес-функций.
-    /// </summary>
+   
     public interface ICarAnalytics
     {
         /// <summary>

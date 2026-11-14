@@ -8,9 +8,8 @@
     ".NETCoreApp,Version=v8.0": {
       "ISA.ConsoleView/1.0.0": {
         "dependencies": {
-          "ISA.BusinessLogic": "1.0.0",
-          "ISA.DataAccessLayer": "1.0.0",
-          "ISA.Model": "1.0.0",
+          "ISA.Presenter": "1.0.0",
+          "ISA.Shared": "1.0.0",
           "Ninject": "3.3.6"
         },
         "runtime": {
@@ -664,6 +663,27 @@
             "fileVersion": "1.0.0.0"
           }
         }
+      },
+      "ISA.Presenter/1.0.0": {
+        "dependencies": {
+          "ISA.BusinessLogic": "1.0.0",
+          "ISA.Model": "1.0.0",
+          "ISA.Shared": "1.0.0"
+        },
+        "runtime": {
+          "ISA.Presenter.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "ISA.Shared/1.0.0": {
+        "runtime": {
+          "ISA.Shared.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -1125,6 +1145,16 @@
       "sha512": ""
     },
     "ISA.Model/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ISA.Presenter/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ISA.Shared/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

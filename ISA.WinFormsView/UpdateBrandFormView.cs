@@ -1,88 +1,50 @@
 ﻿using System;
 using System.Windows.Forms;
-using ISA.Model;
-using ISA.BusinessLogic;
-
+using ISA.Shared;
+using static ISA.Shared.CarDto;
 
 namespace ISA.WinFormsView
 {
     public partial class UpdateBrandFormView : Form
     {
-        private readonly ILogic _logic;
-        private int _carId;
-        public UpdateBrandFormView(ILogic logic, int carId)
+        private readonly CarBrandDto _currentBrand;
+
+        public CarBrandDto SelectedBrand { get; private set; }
+        public decimal EnteredPrice { get; private set; }
+
+        // Принимаем текущий бренд машины из MainFormView (на случай, если юзер нажмет "Далее")
+        public UpdateBrandFormView(CarBrandDto currentBrand, decimal currentPrice)
         {
             InitializeComponent();
-            _logic = logic;
-            _carId = carId;
+            _currentBrand = currentBrand;
         }
 
-        /// <summary>
-        /// Вспомогательный метод, который открывает окно изменения цены для указанного бренда.
-        /// Если обновление прошло успешно, закрывает текущую форму.
-        /// </summary>
-        /// <param name="newBrand">Новый выбранный бренд автомобиля.</param>
-        private void OpenUpdatePriceForm(Car.CarBrand newBrand)
+        private void OpenUpdatePriceForm(CarBrandDto newBrand)
         {
-            UpdatePriceFormView updatePriceForm = new UpdatePriceFormView(_logic, _carId, newBrand);
+            UpdatePriceFormView updatePriceForm = new UpdatePriceFormView();
 
             if (updatePriceForm.ShowDialog() == DialogResult.OK)
             {
+                SelectedBrand = newBrand;
+                EnteredPrice = updatePriceForm.EnteredPrice;
+
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
         }
 
-        /// <summary>
-        /// Обрабатывает событие клика по кнопке обновления бренда на BMW.
-        /// </summary>
-        private void UpdateBMWButton_Click(object sender, EventArgs e)
-        {
-            OpenUpdatePriceForm(Car.CarBrand.BMW);
-        }
+        private void UpdateBMWButton_Click(object sender, EventArgs e) => OpenUpdatePriceForm(CarBrandDto.BMW);
+        private void UpdateMersedesButton_Click(object sender, EventArgs e) => OpenUpdatePriceForm(CarBrandDto.Mercedes);
+        private void UpdateVolvoButton_Click(object sender, EventArgs e) => OpenUpdatePriceForm(CarBrandDto.Volvo);
+        private void UpdateAudiButton_Click(object sender, EventArgs e) => OpenUpdatePriceForm(CarBrandDto.Audi);
+        private void UpdateVolkswagenButton_Click(object sender, EventArgs e) => OpenUpdatePriceForm(CarBrandDto.Volkswagen);
 
         /// <summary>
-        /// Обрабатывает событие клика по кнопке обновления бренда на Mercedes.
-        /// </summary>
-        private void UpdateMersedesButton_Click(object sender, EventArgs e)
-        {
-            OpenUpdatePriceForm(Car.CarBrand.Mercedes);
-        }
-
-        /// <summary>
-        /// Обрабатывает событие клика по кнопке обновления бренда на Volvo.
-        /// </summary>
-        private void UpdateVolvoButton_Click(object sender, EventArgs e)
-        {
-            OpenUpdatePriceForm(Car.CarBrand.Volvo);
-        }
-
-        /// <summary>
-        /// Обрабатывает событие клика по кнопке обновления бренда на Audi.
-        /// </summary>
-        private void UpdateAudiButton_Click(object sender, EventArgs e)
-        {
-            OpenUpdatePriceForm(Car.CarBrand.Audi);
-        }
-
-        /// <summary>
-        /// Обрабатывает событие клика по кнопке обновления бренда на Volkswagen.
-        /// </summary>
-        private void UpdateVolkswagenButton_Click(object sender, EventArgs e)
-        {
-            OpenUpdatePriceForm(Car.CarBrand.Volkswagen);
-        }
-
-        /// <summary>
-        /// Обрабатывает событие клика по кнопке "Далее". 
+        /// Обрабатывает событие клика по кнопке "Далее" (оставляет бренд без изменений). 
         /// </summary>
         private void NextButton_Click(object sender, EventArgs e)
         {
-            Car? currentCar = _logic.GetById(_carId);
-            if (currentCar != null)
-            {
-                OpenUpdatePriceForm(currentCar.Brand);
-            }
+            OpenUpdatePriceForm(_currentBrand);
         }
     }
 }

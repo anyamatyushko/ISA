@@ -1,21 +1,15 @@
 ﻿using System;
 using System.Windows.Forms;
-using ISA.Model;
-using ISA.BusinessLogic;
 
 namespace ISA.WinFormsView
 {
     public partial class UpdatePriceFormView : Form
     {
-        private readonly ILogic _logic;
-        private int _carId;
-        private Car.CarBrand _newBrand;
-        public UpdatePriceFormView(ILogic logic, int carId, Car.CarBrand newBrand)
+        public decimal EnteredPrice { get; private set; }
+
+        public UpdatePriceFormView()
         {
             InitializeComponent();
-            _logic = logic;
-            _carId = carId;
-            _newBrand = newBrand;
         }
 
         /// <summary>
@@ -25,25 +19,15 @@ namespace ISA.WinFormsView
         {
             if (decimal.TryParse(textBox1.Text, out decimal enteredPrice))
             {
-
                 if (enteredPrice < 0)
                 {
                     MessageBox.Show("Цена не может быть отрицательной!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                bool isUpdated = _logic.Update(_carId, _newBrand, enteredPrice);
-
-                if (isUpdated)
-                {
- 
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Не удалось обновить данные автомобиля.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                EnteredPrice = enteredPrice;
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
             else
             {

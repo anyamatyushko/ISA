@@ -20,7 +20,6 @@
             AddButton = new Button();
             UpdateButton = new Button();
             DeleteButton = new Button();
-            SortByBrandButton = new Button();
             BudgetButton = new Button();
             ResetFilterButton = new Button();
             dgvCars = new DataGridView();
@@ -64,22 +63,10 @@
             DeleteButton.UseVisualStyleBackColor = true;
             DeleteButton.Click += DeleteButton_Click;
             // 
-            // SortByBrandButton
-            // 
-            SortByBrandButton.Anchor = AnchorStyles.Top;
-            SortByBrandButton.Location = new Point(1076, 555);
-            SortByBrandButton.Margin = new Padding(2);
-            SortByBrandButton.Name = "SortByBrandButton";
-            SortByBrandButton.Size = new Size(256, 38);
-            SortByBrandButton.TabIndex = 3;
-            SortByBrandButton.Text = "Сортировать по бренду";
-            SortByBrandButton.UseVisualStyleBackColor = true;
-            SortByBrandButton.Click += SortByBrandButton_Click;
-            // 
             // BudgetButton
             // 
             BudgetButton.Anchor = AnchorStyles.Top;
-            BudgetButton.Location = new Point(1184, 641);
+            BudgetButton.Location = new Point(1184, 598);
             BudgetButton.Margin = new Padding(2);
             BudgetButton.Name = "BudgetButton";
             BudgetButton.Size = new Size(148, 49);
@@ -112,7 +99,7 @@
             // 
             // GroupByBrandButton
             // 
-            GroupByBrandButton.Location = new Point(1079, 598);
+            GroupByBrandButton.Location = new Point(1079, 555);
             GroupByBrandButton.Name = "GroupByBrandButton";
             GroupByBrandButton.Size = new Size(253, 38);
             GroupByBrandButton.TabIndex = 7;
@@ -129,7 +116,6 @@
             Controls.Add(dgvCars);
             Controls.Add(ResetFilterButton);
             Controls.Add(BudgetButton);
-            Controls.Add(SortByBrandButton);
             Controls.Add(DeleteButton);
             Controls.Add(UpdateButton);
             Controls.Add(AddButton);
@@ -146,7 +132,6 @@
         private Button AddButton;
         private Button UpdateButton;
         private Button DeleteButton;
-        private Button SortByBrandButton;
         private Button BudgetButton;
         private Button ResetFilterButton;
         private DataGridView dgvCars;

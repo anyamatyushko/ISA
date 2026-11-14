@@ -1,0 +1,12 @@
+C:\MyProjects\ISA\ISA.Shared\bin\Debug\net8.0\ISA.Shared.deps.json
+C:\MyProjects\ISA\ISA.Shared\bin\Debug\net8.0\ISA.Shared.dll
+C:\MyProjects\ISA\ISA.Shared\bin\Debug\net8.0\ISA.Shared.pdb
+C:\MyProjects\ISA\ISA.Shared\obj\Debug\net8.0\ISA.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\MyProjects\ISA\ISA.Shared\obj\Debug\net8.0\ISA.Shared.AssemblyInfoInputs.cache
+C:\MyProjects\ISA\ISA.Shared\obj\Debug\net8.0\ISA.Shared.AssemblyInfo.cs
+C:\MyProjects\ISA\ISA.Shared\obj\Debug\net8.0\ISA.Shared.csproj.CoreCompileInputs.cache
+C:\MyProjects\ISA\ISA.Shared\obj\Debug\net8.0\ISA.Shared.sourcelink.json
+C:\MyProjects\ISA\ISA.Shared\obj\Debug\net8.0\ISA.Shared.dll
+C:\MyProjects\ISA\ISA.Shared\obj\Debug\net8.0\refint\ISA.Shared.dll
+C:\MyProjects\ISA\ISA.Shared\obj\Debug\net8.0\ISA.Shared.pdb
+C:\MyProjects\ISA\ISA.Shared\obj\Debug\net8.0\ref\ISA.Shared.dll

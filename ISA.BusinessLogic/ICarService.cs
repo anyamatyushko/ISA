@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace ISA.BusinessLogic
 {
-    /// <summary>
-    /// Интерфейс для стандартных операций управления данными автомобилей (CRUD).
-    /// </summary>
+  
     public interface ICarService
     {
         /// <summary>
