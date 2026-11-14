@@ -12,9 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ISA.BusinessLogic\ISA.BusinessLogic.csproj" />
-    <ProjectReference Include="..\ISA.DataAccessLayer\ISA.DataAccessLayer.csproj" />
-    <ProjectReference Include="..\ISA.Model\ISA.Model.csproj" />
+    <ProjectReference Include="..\ISA.Presenter\ISA.Presenter.csproj" />
+    <ProjectReference Include="..\ISA.Shared\ISA.Shared.csproj" />
   </ItemGroup>
 
 </Project>

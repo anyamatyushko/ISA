@@ -4,15 +4,15 @@ using ISA.Model;
 
 namespace ISA.BusinessLogic
 {
-    /// <summary>
-    /// Реализация единой точки доступа (Фасада) ILogic. 
-    /// Класс не содержит собственной бизнес-логики, а делегирует (перенаправляет) все вызовы 
-    /// специализированным сервисам учета и аналитики.
-    /// </summary>
     public class Logic : ILogic
     {
         private readonly ICarService _carService;
         private readonly ICarAnalytics _carAnalytics;
+
+        /// <summary>
+        /// Событие, оповещающее подписчиков (Презентер) о результате выполнения операции.
+        /// </summary>
+        public event Action<string>? OnOperationCompleted;
 
         /// <summary>
         /// Инициализирует фасадную логику и внедряет необходимые сервисы через DI-контейнер.
@@ -25,17 +25,20 @@ namespace ISA.BusinessLogic
             _carAnalytics = carAnalytics;
         }
 
-
-
         /// <summary>
-        /// Перенаправляет запрос на создание нового автомобиля с проверкой в сервис учета.
+        /// Перенаправляет запрос на создание нового автомобиля в сервис учета и оповещает подписчиков.
         /// </summary>
         /// <param name="brand">Марка автомобиля.</param>
         /// <param name="price">Стоимость автомобиля.</param>
         /// <returns>Уникальный числовой идентификатор (ID), сгенерированный для нового автомобиля.</returns>
         public int Create(Car.CarBrand brand, decimal price)
         {
-            return _carService.Create(brand, price);
+            int newId = _carService.Create(brand, price);
+
+            // Оповещаем Презентер об успешном создании
+            OnOperationCompleted?.Invoke($"Автомобиль {brand} успешно добавлен с ID: {newId}");
+
+            return newId;
         }
 
         /// <summary>
@@ -58,7 +61,7 @@ namespace ISA.BusinessLogic
         }
 
         /// <summary>
-        /// Перенаправляет запрос на обновление данных существующего автомобиля в сервис учета.
+        /// Перенаправляет запрос на обновление данных существующего автомобиля в сервис учета и оповещает подписчиков.
         /// </summary>
         /// <param name="id">Уникальный числовой идентификатор (ID) автомобиля, данные которого нужно изменить.</param>
         /// <param name="newBrand">Новая марка автомобиля.</param>
@@ -66,17 +69,33 @@ namespace ISA.BusinessLogic
         /// <returns>Значение true, если данные автомобиля успешно обновлены; в противном случае — false.</returns>
         public bool Update(int id, Car.CarBrand newBrand, decimal newPrice)
         {
-            return _carService.Update(id, newBrand, newPrice);
+            bool isUpdated = _carService.Update(id, newBrand, newPrice);
+
+            // Формируем сообщение в зависимости от результата и оповещаем Презентер
+            string message = isUpdated
+                ? $"Данные автомобиля с ID {id} успешно обновлены."
+                : $"Не удалось обновить: автомобиль с ID {id} не найден.";
+            OnOperationCompleted?.Invoke(message);
+
+            return isUpdated;
         }
 
         /// <summary>
-        /// Перенаправляет запрос на удаление автомобиля по его уникальному идентификатору в сервис учета.
+        /// Перенаправляет запрос на удаление автомобиля по его уникальному идентификатору в сервис учета и оповещает подписчиков.
         /// </summary>
         /// <param name="id">Уникальный числовой идентификатор (ID) автомобиля, который необходимо удалить.</param>
         /// <returns>Значение true, если автомобиль успешно удален; в противном случае — false.</returns>
         public bool Delete(int id)
         {
-            return _carService.Delete(id);
+            bool isDeleted = _carService.Delete(id);
+
+            // Формируем сообщение в зависимости от результата и оповещаем Презентер
+            string message = isDeleted
+                ? $"Автомобиль с ID {id} успешно удален."
+                : $"Не удалось удалить: автомобиль с ID {id} не найден.";
+            OnOperationCompleted?.Invoke(message);
+
+            return isDeleted;
         }
 
         /// <summary>
@@ -97,6 +116,5 @@ namespace ISA.BusinessLogic
         {
             return _carAnalytics.GetCarByBudget(maxBudget);
         }
-
     }
 }

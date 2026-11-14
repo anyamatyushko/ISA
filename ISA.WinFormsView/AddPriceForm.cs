@@ -1,21 +1,15 @@
-﻿using ISA.Model;
-using System;
+﻿using System;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using ISA.BusinessLogic;
 
 namespace ISA.WinFormsView
 {
     public partial class AddPriceFormView : Form
     {
-        private readonly ILogic _logic;
-        private Car.CarBrand _selectedBrand;
+        public decimal EnteredPrice { get; private set; }
 
-        public AddPriceFormView(ILogic logic, Car.CarBrand brand)
+        public AddPriceFormView()
         {
             InitializeComponent();
-            _logic = logic;
-            _selectedBrand = brand;
         }
 
         /// <summary>
@@ -31,7 +25,7 @@ namespace ISA.WinFormsView
                     return;
                 }
 
-                _logic.Create(_selectedBrand, enteredPrice);
+                EnteredPrice = enteredPrice;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -41,12 +35,6 @@ namespace ISA.WinFormsView
             }
         }
 
-        /// <summary>
-        /// Обрабатывает событие клика по текстовой метке label1.
-        /// </summary>
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-        }
+        private void label1_Click_1(object sender, EventArgs e) { }
     }
 }
-

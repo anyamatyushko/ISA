@@ -68,3 +68,7 @@ C:\MyProjects\ISA\ISA.WinFormsView\bin\Debug\net8.0-windows\ISA.BusinessLogic.pd
 C:\MyProjects\ISA\ISA.WinFormsView\bin\Debug\net8.0-windows\ISA.DataAccessLayer.pdb
 C:\MyProjects\ISA\ISA.WinFormsView\bin\Debug\net8.0-windows\Dapper.dll
 C:\MyProjects\ISA\ISA.WinFormsView\bin\Debug\net8.0-windows\Ninject.dll
+C:\MyProjects\ISA\ISA.WinFormsView\bin\Debug\net8.0-windows\ISA.Presenter.dll
+C:\MyProjects\ISA\ISA.WinFormsView\bin\Debug\net8.0-windows\ISA.Shared.dll
+C:\MyProjects\ISA\ISA.WinFormsView\bin\Debug\net8.0-windows\ISA.Presenter.pdb
+C:\MyProjects\ISA\ISA.WinFormsView\bin\Debug\net8.0-windows\ISA.Shared.pdb

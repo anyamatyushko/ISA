@@ -6,9 +6,7 @@ using ISA.DataAccessLayer.EntityFrameworkCore;
 
 namespace ISA.BusinessLogic
 {
-    /// <summary>
-    /// Централизованная точка конфигурации зависимостей приложения.
-    /// </summary>
+   
     public class SimpleConfigModule : NinjectModule
     {
         private readonly string _connectionString;
@@ -30,12 +28,10 @@ namespace ISA.BusinessLogic
             Bind<MyDbContext>().ToSelf().WithConstructorArgument("options", optionsBuilder.Options);
 
             Bind<IRepository<Car>>().To<EntityRepository<Car>>().InSingletonScope();
-
-         
             // Bind<IRepository<Car>>().To<DapperRepository>().WithConstructorArgument("connectionString", _connectionString).InSingletonScope();
 
-            Bind<ICarService>().To<CarService>();
-            Bind<ICarAnalytics>().To<CarAnalytics>();
+            Bind<ICarService>().To<CarService>().InSingletonScope();
+            Bind<ICarAnalytics>().To<CarAnalytics>().InSingletonScope();
             Bind<ILogic>().To<Logic>();
         }
     }

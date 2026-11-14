@@ -1,32 +1,39 @@
-﻿using ISA.BusinessLogic;
-using ISA.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using ISA.Shared;
+
 
 namespace ISA.WinFormsView
 {
-    public partial class MainFormView : Form
+    public partial class MainFormView : Form, IView
     {
+        // Кэш текущих машин на экране (нужен для локальной сортировки и предзаполнения окна редактирования)
+        private List<CarDto> _currentCars = new List<CarDto>();
 
-        private readonly ILogic _logic;
-      
+        public event Action? OnLoadAllCars;
+        public event Action<CarBrandDto, decimal>? OnCreateCar;
+        public event Action<int, CarBrandDto, decimal>? OnUpdateCar;
+        public event Action<int>? OnDeleteCar;
+        public event Action<decimal>? OnFilterByBudget;
+        public event Action? OnGroupByBrand;
 
-        public MainFormView(ILogic logic)
+        public MainFormView()
         {
             InitializeComponent();
-            _logic = logic;
+        }
+
+        private void MainFormView_Load(object sender, EventArgs e)
+        {
+            InitTable();
+            OnLoadAllCars?.Invoke();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            RefreshGrid();
-        }
-
-        private void RefreshGrid()
-        {
-            dgvCars.DataSource = _logic.GetAll();
+            OnLoadAllCars?.Invoke();
         }
 
         /// <summary>
@@ -38,54 +45,99 @@ namespace ISA.WinFormsView
             dgvCars.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
-        /// <summary>
-        /// Обновляет строки таблицы на основе данных из бизнес-логики.
-        /// </summary>
-        /// <param name="maxPrice">Максимально допустимая цена автомобиля для фильтрации.</param>
-        private void UpdateTable(decimal? maxPrice = null)
-        {
-            List<Car> carsToShow;
 
-            if (maxPrice.HasValue)
+        /// <summary>
+        /// Отображает переданный список автомобилей в таблице.
+        /// </summary>
+        public void DisplayCars(List<CarDto> cars)
+        {
+            _currentCars = cars;
+
+            dgvCars.DataSource = null;
+            dgvCars.Columns.Clear();
+            dgvCars.DataSource = _currentCars;
+        }
+
+        /// <summary>
+        /// Отрисовывает сгруппированный по брендам список автомобилей с серыми заголовками групп.
+        /// </summary>
+        public void DisplayGroupedCars(Dictionary<CarBrandDto, List<CarDto>> groupedData)
+        {
+            if (groupedData.Count == 0)
             {
-                carsToShow = _logic.GetCarByBudget(maxPrice.Value);
-            }
-            else
-            {
-                carsToShow = _logic.GetAll();
+                MessageBox.Show("Список автомобилей пуст. Нечего группировать.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
 
             dgvCars.DataSource = null;
             dgvCars.Columns.Clear();
+            dgvCars.Columns.Add("Id", "ID");
+            dgvCars.Columns.Add("Brand", "Бренд");
+            dgvCars.Columns.Add("Price", "Цена");
+            dgvCars.Rows.Clear();
 
-            dgvCars.DataSource = carsToShow;
-        }
-
-        /// <summary>
-        /// Обрабатывает событие клика по кнопке "Создать".
-        /// </summary>
-        private void AddButton_Click(object sender, EventArgs e)
-        {
-            AddBrandFormView addBrandFormView = new AddBrandFormView(_logic);
-
-            if (addBrandFormView.ShowDialog() == DialogResult.OK)
+            foreach (KeyValuePair<CarBrandDto, List<CarDto>> pair in groupedData)
             {
-                UpdateTable();
+                CarBrandDto brand = pair.Key;
+                List<CarDto> carsInGroup = pair.Value;
+
+                int headerIndex = dgvCars.Rows.Add();
+                dgvCars.Rows[headerIndex].Cells[0].Value = $"*Группа: {brand} (Количество: {carsInGroup.Count})";
+
+                dgvCars.Rows[headerIndex].DefaultCellStyle.Font = new Font(dgvCars.Font, FontStyle.Bold);
+                dgvCars.Rows[headerIndex].DefaultCellStyle.BackColor = Color.LightGray;
+                dgvCars.Rows[headerIndex].ReadOnly = true;
+
+                foreach (CarDto car in carsInGroup)
+                {
+                    string indentedBrand = "    " + car.Brand.ToString();
+                    dgvCars.Rows.Add(car.Id, indentedBrand, car.Price.ToString("C"));
+                }
             }
         }
 
         /// <summary>
-        /// Обрабатывает событие клика по кнопке "Обновить". 
+        /// Выводит всплывающее окно с сообщением от Презентера или Модели.
+        /// </summary>
+        public void ShowMessage(string message)
+        {
+            MessageBox.Show(message, "Уведомление", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            // Дочерняя форма теперь работает как BudgetFormView: не принимает логику, а возвращает свойства
+            AddBrandFormView addBrandFormView = new AddBrandFormView();
+
+            if (addBrandFormView.ShowDialog() == DialogResult.OK)
+            {
+                OnCreateCar?.Invoke(addBrandFormView.SelectedBrand, addBrandFormView.EnteredPrice);
+                OnLoadAllCars?.Invoke(); // Запрашиваем обновленный список для таблицы
+            }
+        }
+
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-            if (dgvCars.SelectedRows.Count > 0)
+            if (dgvCars.SelectedRows.Count > 0 && dgvCars.SelectedRows[0].Cells[0].Value != null)
             {
-                int selectedId = Convert.ToInt32(dgvCars.SelectedRows[0].Cells[0].Value);
-                UpdateBrandFormView updateBrandFormView = new UpdateBrandFormView(_logic, selectedId);
+                // Защита от клика по серому заголовку группы
+                if (!int.TryParse(dgvCars.SelectedRows[0].Cells[0].Value.ToString(), out int selectedId))
+                {
+                    ShowMessage("Пожалуйста, выберите строку с конкретным автомобилем, а не заголовок группы.");
+                    return;
+                }
+
+                var selectedCar = _currentCars.FirstOrDefault(c => c.Id == selectedId);
+                if (selectedCar == null) return;
+
+                // Передаем в окно редактирования только DTO-данные для предзаполнения полей
+                UpdateBrandFormView updateBrandFormView = new UpdateBrandFormView(selectedCar.Brand, selectedCar.Price);
 
                 if (updateBrandFormView.ShowDialog() == DialogResult.OK)
                 {
-                    UpdateTable();
+                    OnUpdateCar?.Invoke(selectedId, updateBrandFormView.SelectedBrand, updateBrandFormView.EnteredPrice);
+                    OnLoadAllCars?.Invoke();
                 }
             }
             else
@@ -95,9 +147,6 @@ namespace ISA.WinFormsView
             }
         }
 
-        /// <summary>
-        /// Обрабатывает событие клика по кнопке "Бюджет".
-        /// </summary>
         private void BudgetButton_Click(object sender, EventArgs e)
         {
             BudgetFormView budgetFormView = new BudgetFormView();
@@ -105,23 +154,22 @@ namespace ISA.WinFormsView
             if (budgetFormView.ShowDialog() == DialogResult.OK)
             {
                 decimal maxBudget = budgetFormView.EnteredBudget;
-                UpdateTable(maxBudget);
+                OnFilterByBudget?.Invoke(maxBudget);
             }
         }
 
-        /// <summary>
-        /// Обрабатывает событие клика по кнопке "Удалить".
-        /// </summary>
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            if (dgvCars.SelectedRows.Count > 0)
+            if (dgvCars.SelectedRows.Count > 0 && dgvCars.SelectedRows[0].Cells[0].Value != null)
             {
-                int selectedId = Convert.ToInt32(dgvCars.SelectedRows[0].Cells[0].Value);
-
-                if (_logic.Delete(selectedId))
+                if (!int.TryParse(dgvCars.SelectedRows[0].Cells[0].Value.ToString(), out int selectedId))
                 {
-                    UpdateTable();
+                    ShowMessage("Выберите строку с конкретным автомобилем.");
+                    return;
                 }
+
+                OnDeleteCar?.Invoke(selectedId);
+                OnLoadAllCars?.Invoke();
             }
             else
             {
@@ -129,83 +177,30 @@ namespace ISA.WinFormsView
             }
         }
 
-        /// <summary>
-        /// Обрабатывает событие клика по кнопке "Сортировать по бренду". 
-        /// </summary>
         private void SortByBrandButton_Click(object sender, EventArgs e)
         {
-            List<Car> allCars = _logic.GetAll();
-
-            if (allCars.Count == 0)
+            if (_currentCars.Count == 0)
             {
                 MessageBox.Show("Список автомобилей пуст. Нечего сортировать.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            var sortedCars = allCars.OrderBy(car => car.Brand).ToList();
+            var sortedCars = _currentCars.OrderBy(car => car.Brand.ToString()).ToList();
 
             dgvCars.DataSource = null;
             dgvCars.DataSource = sortedCars;
         }
 
-        /// <summary>
-        /// Обрабатывает событие клика по кнопке "Группировать по бренду". 
-        /// </summary>
         private void GroupByBrandButton_Click(object sender, EventArgs e)
         {
-            Dictionary<Car.CarBrand, List<Car>> groupedData = _logic.GroupByBrand();
-
-            if (groupedData.Count == 0)
-            {
-                MessageBox.Show("Список автомобилей пуст. Нечего группировать.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            dgvCars.DataSource = null;
-
-            dgvCars.Columns.Clear();
-            dgvCars.Columns.Add("Id", "ID");
-            dgvCars.Columns.Add("Brand", "Бренд");
-            dgvCars.Columns.Add("Price", "Цена");
-
-            dgvCars.Rows.Clear();
-
-            foreach (KeyValuePair<Car.CarBrand, List<Car>> pair in groupedData)
-            {
-                Car.CarBrand brand = pair.Key;
-                List<Car> carsInGroup = pair.Value;
-
-                int headerIndex = dgvCars.Rows.Add();
-
-                dgvCars.Rows[headerIndex].Cells[0].Value = $"*Группа: {brand} (Количество: {carsInGroup.Count})";
-
-                dgvCars.Rows[headerIndex].DefaultCellStyle.Font = new Font(dgvCars.Font, FontStyle.Bold);
-                dgvCars.Rows[headerIndex].DefaultCellStyle.BackColor = Color.LightGray;
-                dgvCars.Rows[headerIndex].ReadOnly = true;
-
-                foreach (Car car in carsInGroup)
-                {
-                    string indentedBrand = "    " + car.Brand.ToString();
-                    dgvCars.Rows.Add(car.Id, indentedBrand, car.Price.ToString("C"));
-                }
-            }
+            OnGroupByBrand?.Invoke();
         }
 
-        /// <summary>
-        /// Обрабатывает событие клика по кнопке "Вернуть в исходное состояние". 
-        /// </summary>
         private void ResetFilterButton_Click(object sender, EventArgs e)
         {
-            UpdateTable();
+            OnLoadAllCars?.Invoke();
         }
 
-        /// <summary>
-        /// Обрабатывает событие загрузки главной формы. 
-        /// </summary>
-        private void MainFormView_Load(object sender, EventArgs e)
-        {
-            InitTable();
-            UpdateTable();
-        }
+
     }
 }

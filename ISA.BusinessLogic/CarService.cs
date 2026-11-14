@@ -5,9 +5,7 @@ using ISA.DataAccessLayer;
 
 namespace ISA.BusinessLogic
 {
-    /// <summary>
-    /// Сервис, отвечающий только за базовый учет и валидацию данных автомобилей.
-    /// </summary>
+   
     public class CarService : ICarService
     {
         private readonly IRepository<Car> _carRepository;

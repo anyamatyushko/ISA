@@ -4,9 +4,7 @@ using ISA.DataAccessLayer;
 
 namespace ISA.BusinessLogic
 {
-    /// <summary>
-    /// Сервис, отвечающий исключительно за аналитические бизнес-функции.
-    /// </summary>
+    
     public class CarAnalytics : ICarAnalytics
     {
         private readonly IRepository<Car> _carRepository;

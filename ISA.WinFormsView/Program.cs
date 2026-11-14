@@ -1,12 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
-using Microsoft.EntityFrameworkCore;
-using Ninject;
-using ISA.BusinessLogic;
-using ISA.DataAccessLayer;
-using ISA.DataAccessLayer.EntityFrameworkCore;
-using ISA.Model;
+using ISA.Presenter;
 
 namespace ISA.WinFormsView
 {
@@ -22,13 +17,14 @@ namespace ISA.WinFormsView
             string dbPath = Path.Combine(userFolder, "MySharedCarDb.mdf");
             string connectionString = $@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=MySharedCarDb;Integrated Security=true;AttachDbFilename={dbPath};";
 
-            // Здесь тоже настраиваю Ninject
-            var kernel = new StandardKernel(new SimpleConfigModule(connectionString));
+            // 1. Создаем главную форму
+            var mainForm = new MainFormView();
 
+            // 2. Передаем её в точку сборки (в Презентер), чтобы привязать логику и события
+            AppComposer.Compose(mainForm, connectionString);
 
-            ILogic logic = kernel.Get<ILogic>();
-            Application.Run(new MainFormView(logic));
+            // 3. Запускаем окно
+            Application.Run(mainForm);
         }
     }
 }
-
